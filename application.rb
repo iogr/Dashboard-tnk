@@ -6,7 +6,7 @@ db_client = TinyTds::Client.new(
 	:username => 'pxrptuser', 
 	:password => 'pxrptuser', 
 	:host => '82.138.55.29',
-	:database => 'PMDB_ROSPAN')
+	:database => 'PMDB')
 
 before /.*/ do
   content_type :json
