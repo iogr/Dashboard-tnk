@@ -6,3 +6,5 @@ set :repository, 'git@github.com:iogr/Dashboard-tnk.git'
 
 set :unicorn_pid, "#{deploy_to}/shared/log/unicorn.pid"
 set :unicorn_command, "cd #{deploy_to}/current && RACK_ENV=production bundle exec unicorn"
+
+set :web_command, "nginx"
