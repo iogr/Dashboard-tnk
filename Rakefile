@@ -1,6 +1,6 @@
 begin
   require 'vlad'
-  Vlad.load :scm => :git, :app => :unicorn
+  Vlad.load :scm => :git, :app => :unicorn, :web => :nginx
 rescue LoadError
   # do nothing
 end
