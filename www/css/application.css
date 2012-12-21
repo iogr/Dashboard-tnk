@@ -29,6 +29,10 @@
 		-moz-appearance: none;
 	}
 
+    td {padding: 3px; border: 1px solid black;}
+    table {width: 100%;}
+    td.header {background-color: #bbbbbb; width:40%;}
+
 	.vam{vertical-align:middle}
 	.tac{text-align:center}
 	.tar{text-align:right}

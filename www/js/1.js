@@ -1,9 +1,13 @@
 var fact = 0;
 $(document).ready(function() {
-  $.getJSON('94.127.69.63:8080/1/eps', function(data) {
-    $('#eps_name').html(data[0]['name']);
-    $('#eps_sumbaselinestartdate').html(data[0]['sumbaselinestartdate']);
-    $('#eps_sumbaselinefinishdate').html(data[0]['sumbaselinefinishdate']);
+  $.getJSON('http://94.127.69.63:8080/1/eps', function(data) {
+    $('#eps_name').html(
+      data[0]['name']);
+    var d = new Date();
+    d.setTime(Date.parse(data[0]['sumbaselinestartdate']))
+    $('#eps_sumbaselinestartdate').html($.datepicker.formatDate('dd.mm.yy', d));
+    d.setTime(Date.parse(data[0]['sumbaselinefinishdate']));
+    $('#eps_sumbaselinefinishdate').html($.datepicker.formatDate('dd.mm.yy', d));
   });
 });
 
@@ -149,7 +153,7 @@ $(function () {
     
   },
   function(plan_fact_gauge) {
-    $.getJSON('94.127.69.63:8080/1/eps', function(data) {
+    $.getJSON('http://94.127.69.63:8080/1/eps', function(data) {
       plan_fact_gauge.series[0].points[0].update(parseFloat(data[0]['sumcostpercentcomplete']));
     });
   });

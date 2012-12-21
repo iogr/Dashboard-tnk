@@ -3,7 +3,7 @@ require 'json'
 require 'tiny_tds'
 
 set :public_folder, File.dirname(__FILE__) + '/www'
-set :eps_id, 17731
+set :eps_id, 3667
 
 db_client = TinyTds::Client.new(
 	:username => 'pxrptuser', 
@@ -12,7 +12,8 @@ db_client = TinyTds::Client.new(
 	:database => 'PMDB')
 
 before /.*/ do
-  content_type :json
+  content_type :json  
+  headers("Access-Control-Allow-Origin" => "*")
 end
 
 get '/1/eps' do
@@ -22,12 +23,12 @@ get '/1/eps' do
   result.to_json
 end
 
-get '/1/zero_project' do
-  result = []
-  query_result = db_client.execute("SELECT * FROM PROJECT WHERE parentepsobjectid = #{options.eps_id};")
-  query_result.each{|row| result << row}
-  result.to_json
-end
+# get '/1/zero_project' do
+#   result = []
+#   query_result = db_client.execute("SELECT * FROM PROJECT WHERE objectid = #{options.eps_id};")
+#   query_result.each{|row| result << row}
+#   result.to_json
+# end
 
 get '/db/:table' do
   result = []
