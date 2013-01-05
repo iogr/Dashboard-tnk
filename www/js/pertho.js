@@ -491,7 +491,7 @@
 			dsPlot1 = $.jqplot('ds_plot1', [dsPlot1_data], {
 				animate: !$.jqplot.use_excanvas,
 				seriesColors: ["#058DC7"],
-				title: 'Unique Visitors by Day - March 2012',
+				title: '\u0413\u0440\u0430\u0444\u0438\u043A \u0441 \u043F\u043E\u0434\u0433\u0440\u0443\u0437\u043A\u043E\u0439 \u0434\u0430\u043D\u043D\u044B\u0445',
 				highlighter: { show: true, sizeAdjust: 7.5 , tooltipLocation : 'n' },
 				axesDefaults: {
 					labelRenderer: $.jqplot.CanvasAxisLabelRenderer
@@ -540,7 +540,7 @@
 					rendererOptions: {fillToZero: true},
 					pointLabels: { show: true }
 				},
-				title: 'Another chart',
+				title: '',
 				series:[
 					{label:'Hotel'},
 					{label:'Event Regristration'},
