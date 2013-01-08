@@ -106,7 +106,7 @@
 				<div class="twelve columns centered">
 					<div class="box_c">
 						<div class="box_c_heading cf">
-							<p>Спидометр</p>
+							<p>Статус Программы</p>
 						</div>
 <script type="text/javascript">
 $(function () {
@@ -229,9 +229,8 @@ $(function () {
     
 });
 		</script>	
-						<div class="box_c_content" id="user-list1">
-							
-						<div id="spider" style="width: 300px; height: 400px; margin: 0 auto"></div>
+						<div class="box_c_content">							
+						<div style="width:500px;overflow:hidden;height:251px;line-height:50px; margin: 0 auto"><div id="spider" style="width:500px;overflow:hidden;height:600px;line-height:50px; margin: 0 auto; padding-top: -80px;margin-top:-80px"></div></div>
 
 
 <div>
@@ -303,10 +302,6 @@ $(function () {
 			</div>
 		</div>
 
-<br>
-
-
-
 <center><div id="plank"><img src="img/plank.png" alt="Pertho Admin" width=60 /></div></center><br>
 		<footer class="container" id="footer">
 			<div class="row">
@@ -345,7 +340,7 @@ gauge: {
                     backgroundColor: '#f46c5e',
                     borderColor: '#a5b4b9',
                     borderWidth: 1,
-                    baseWidth: 10,
+                    baseWidth: 13,
                     topWidth: 1,
                         baseLength: '20%', // of radius
                         rearLength: '0%'
@@ -356,7 +351,7 @@ gauge: {
 
             series: {
                 dataLabels: {
-                    enabled: true,
+                    enabled: false,
 borderRadius:0,
 padding:10,
 x:-100,
@@ -384,7 +379,7 @@ x:-100,
 	            backgroundColor: '#FFFFFF',
 	            borderWidth: 0,
 	            outerRadius: '108%',
-	            innerRadius: '10%'
+	            innerRadius: '9%'
 	        }]
 	    },
 	       
@@ -399,16 +394,21 @@ x:-100,
 	        minorTickLength: 10,
 	        minorTickPosition: 'inside',
 	        minorTickColor: '#666',
-	
+	        
 	        tickPixelInterval: 30,
 	        tickWidth: 1,
 	        tickPosition: 'inside',
 	        tickLength: 34,
 	        tickColor: '#666',
 	        labels: {
-	            step: 1,
-	           
-		    distance: -45
+	            step: 2,
+	            style: {fontSize: '15'},
+		    distance: -87,
+
+
+		 formatter: function() {
+                        return this.value +'%';
+                    }
 			 
 	        },
 	        title: {
