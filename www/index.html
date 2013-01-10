@@ -3,7 +3,8 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+<script type="text/javascript" src="js/jquery.min1.js"></script>
+<script type="text/javascript" src="js/jquery.doubletap.js"></script>
 		<title>PM Expert Dashboard</title>
 
 		<!-- Foundation framework -->
@@ -33,9 +34,43 @@
 		<!--[if lt IE 9]>
 			<link rel="stylesheet" href="foundation/stylesheets/ie.css">
 		
-			<script src="lib/jQplot/excanvas.min.js"></script>
-		<![endif]-->
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<![endif]-->
+	
+<script>
+
+
+function forward () {
+$("div").delay(1).animate({
+                right: "-=560px",
+                opacity: "0.2"
+            }, 200, function() {
+                window.location = "2.html";
+            });
+
+}
+
+function backward () {
+$("div").delay(1).animate({
+                right: "+=560px",
+                opacity: "0.2"
+            }, 200, function() {
+                window.location = "2.html";
+            });
+
+}
+
+
+
+$(document).addSwipeEvents().
+  bind('swiperight', function(evt, touch) {
+    // triggered for swipe events
+backward ();
+
+
+});
+
+
+</script>
 	</head>
 	<body class="ptrn_a grdnt_a mhover_a">
 
@@ -108,127 +143,7 @@
 						<div class="box_c_heading cf">
 							<p>Ход выполнения Программы</p>
 						</div>
-<script type="text/javascript">
-$(function () {
-    var chart;
-    $(document).ready(function() {
-        chart = new Highcharts.Chart({
-            chart: {
-                renderTo: 'user-list',
-                zoomType: 'xy'
-            },
-            title: {
-                text: 'Фактич, планируемые отклонения, стр 1б'
-            },
-            subtitle: {
-                text: 'Пояснения'
-            },
-            xAxis: [{
-                categories: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
-                    'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
-            }],
-            yAxis: [{ // Primary yAxis
-                labels: {
-                    formatter: function() {
-                        return this.value +'х';
-                    },
-                    style: {
-                        color: '#89A54E'
-                    }
-                },
-                title: {
-                    text: 'Третий',
-                    style: {
-                        color: '#89A54E'
-                    }
-                },
-                opposite: true
-    
-            }, { // Secondary yAxis
-                gridLineWidth: 0,
-                title: {
-                    text: 'Первый',
-                    style: {
-                        color: '#4572A7'
-                    }
-                },
-                labels: {
-                    formatter: function() {
-                        return this.value +' %';
-                    },
-                    style: {
-                        color: '#4572A7'
-                    }
-                }
-    
-            }, { // Tertiary yAxis
-                gridLineWidth: 0,
-                title: {
-                    text: 'Второй',
-                    style: {
-                        color: '#AA4643'
-                    }
-                },
-                labels: {
-                    formatter: function() {
-                        
-                    },
-                    style: {
-                        color: '#AA4643'
-                    }
-                },
-                opposite: true
-            }],
-            tooltip: {
-                formatter: function() {
-                    var unit = {
-                        'Первый': 'mm',
-                        'Третий': '°C',
-                        'Второй': 'mb'
-                    }[this.series.name];
-    
-                    return ''+
-                        this.x +': '+ this.y +' '+ unit;
-                }
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'left',
-                x: 120,
-                verticalAlign: 'top',
-                y: 80,
-                floating: true,
-                backgroundColor: '#FFFFFF'
-            },
-            series: [{
-                name: 'Первый',
-                color: '#4572A7',
-                type: 'spline',
-                yAxis: 1,
-                data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
-    dashStyle: 'ShortDash'
-            }, {
-                name: 'Второй',
-                type: 'spline',
-                color: '#AA4643',
-                yAxis: 2,
-                data: [1016, 1016, 1015.9, 1015.5, 1012.3, 1009.5, 1009.6, 1010.2, 1013.1, 1016.9, 1018.2, 1016.7],
-                marker: {
-                    enabled: false
-                },
-                dashStyle: 'Dash'
-    
-            }, {
-                name: 'Третий',
-                color: '#89A54E',
-                type: 'spline',
-                data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
-            }]
-        });
-    });
-    
-});
-		</script>	
+	
 						<div class="box_c_content">							
 						<div style="width:500px;overflow:hidden;height:251px;line-height:50px; margin: 0 auto"><div id="spider" style="width:500px;overflow:hidden;height:600px;line-height:50px; margin: 0 auto; padding-top: -80px;margin-top:-80px"></div></div>
 

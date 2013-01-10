@@ -191,7 +191,7 @@
 ----------------------------------------- */
 
 	/* header */
-		header {min-height: 82px;padding-bottom:30px}
+		header {min-height: 82px;padding-bottom:10px}
 		header .head_s_a {padding-top:10px;border-top:5px solid #949494;border-top:5px solid rgba(0,0,0,.4)}
 		#logo img {padding:-5px 40px 0 16px}
 		header .head_s_a .row {position:relative}
@@ -417,7 +417,7 @@
 		#toTop:active,#toTop:focus{outline:none}
 
 	/* footer */
-		#footer {font-size:11px;margin-top:20px;height:30px}
+		#footer {font-size:11px;margin-top:-20px;height:20px}
 
 /* -----------------------------------------
    Form elements

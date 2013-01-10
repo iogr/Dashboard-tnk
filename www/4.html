@@ -1,23 +1,17 @@
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script type="text/javascript" src="js/jquery.min1.js"></script>
+<script type="text/javascript" src="js/jquery.doubletap.js"></script>
 
 		<title>Pertho Admin Panel</title>
 
 		<!-- Foundation framework -->
 			<link rel="stylesheet" href="foundation/stylesheets/foundation.css">
 		<!-- jquery UI -->
-			<link rel="stylesheet" href="lib/jQueryUI/css/Aristo/Aristo.css" media="all" />
-		<!-- jQplot (charts) -->
-			<link rel="stylesheet" href="lib/jQplot/jquery.jqplot.css" media="all" />
-		<!-- fancybox -->
-			<link rel="stylesheet" href="lib/fancybox/jquery.fancybox-1.3.4.css" media="all" />
-		<!-- fullcalendar -->
-			<link rel="stylesheet" href="lib/fullcalendar/fullcalendar.css" media="all" />
-		<!-- tooltips -->
-			<link rel="stylesheet" href="lib/qtip2/jquery.qtip.min.css" />
+
 		<!-- main styles -->
 			<link rel="stylesheet" href="css/style.css" />
 
@@ -32,10 +26,50 @@
 
 		<!--[if lt IE 9]>
 			<link rel="stylesheet" href="foundation/stylesheets/ie.css">
-			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-			<script src="lib/jQplot/excanvas.min.js"></script>
+			
 		<![endif]-->
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script>
+
+
+function forward () {
+$("div").delay(1).animate({
+                right: "-=560px",
+                opacity: "0.2"
+            }, 200, function() {
+                window.location = "3.html";
+            });
+
+}
+
+function backward () {
+$("div").delay(1).animate({
+                right: "+=560px",
+                opacity: "0.2"
+            }, 200, function() {
+                window.location = "5.html";
+            });
+
+}
+
+$(document).addSwipeEvents().
+  bind('swipeleft', function(evt, touch) {
+    // triggered for swipe events
+forward ();
+
+
+});
+
+
+$(document).addSwipeEvents().
+  bind('swiperight', function(evt, touch) {
+    // triggered for swipe events
+backward ();
+
+
+});
+
+
+</script>
 	</head>
 	<body class="ptrn_a grdnt_a mhover_a">
 
@@ -281,7 +315,6 @@ $(function () {
 		<script src="lib/qtip2/jquery.qtip.min.js"></script>
 		<script src="lib/jQplot/jquery.jqplot.min.js"></script>
 		<script src="lib/jQplot/jqplot.plugins.js"></script>
-		<script src="lib/fullcalendar/fullcalendar.min.js"></script>
 		<script src="js/jquery.list.min.js"></script>
 		<script src="js/pertho.js"></script>
 

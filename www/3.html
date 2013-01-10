@@ -3,7 +3,8 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+<script type="text/javascript" src="js/jquery.min1.js"></script>
+<script type="text/javascript" src="js/jquery.doubletap.js"></script>
 		<title>PM Expert Dashboard</title>
 
 		<!-- Foundation framework -->
@@ -35,7 +36,49 @@
 		
 			<script src="lib/jQplot/excanvas.min.js"></script>
 		<![endif]-->
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script>
+
+
+function forward () {
+$("div").delay(1).animate({
+                right: "-=560px",
+                opacity: "0.2"
+            }, 200, function() {
+                window.location = "2.html";
+            });
+
+}
+
+function backward () {
+$("div").delay(1).animate({
+                right: "+=560px",
+                opacity: "0.2"
+            }, 200, function() {
+                window.location = "4.html";
+            });
+
+}
+
+$(document).addSwipeEvents().
+  bind('swipeleft', function(evt, touch) {
+    // triggered for swipe events
+forward ();
+
+
+});
+
+
+$(document).addSwipeEvents().
+  bind('swiperight', function(evt, touch) {
+    // triggered for swipe events
+backward ();
+
+
+});
+
+
+</script>
+
 	</head>
 	<body class="ptrn_a grdnt_a mhover_a">
 
@@ -202,25 +245,6 @@
 				</div>
 			</div>
 		</footer>
-
-
-	
-
-<script>
-
-$(document).swiperight(function() {
- $("body").delay(1).animate({
-                right: "-=560px",
-                opacity: "0.2"
-            }, 100, function() {
-                window.location = "index.html";
-            });});
-
-
-</script>
-
-
-
 
 <script src="js/highcharts.js"></script>
 <script src="js/highcharts-more.js"></script>
