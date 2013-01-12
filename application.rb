@@ -63,12 +63,19 @@ get '/data/3' do
   # Отклонение по срокам (SV) - sv
   # Индекс выполнения стоимости (CPI) - cpi
   # Отклонение по стоимости (CV) - cv
-  # Длительность до заверш. (VACt) - vact
   # Стоимость до завершения (VAC) - vac
 
 
-  eps_query_result = db_client.execute("SELECT sumcostpercentcomplete as gauge_percent FROM EPS WHERE objectid = #{options.eps_id};")
-  result = eps_query_result.first
+  eps_query_result = db_client.execute("SELECT LTRIM(Str(sumearnedvaluebycost, 25, 5)) as ev,
+                                               LTRIM(Str(sumactualvaluebycost, 25, 5)) as ac,
+                                               LTRIM(Str(sumplannedvaluebycost, 25, 5)) as pv,
+                                               LTRIM(Str(sumscheduleperfindexbycost, 25, 5)) as spi,
+                                               LTRIM(Str(sumschedulevariancebycost, 25, 5)) as sv,
+                                               LTRIM(Str(sumcostperfindexbycost, 25, 5)) as cpi,
+                                               LTRIM(Str(sumcostvariancebycost, 25, 5)) as cv,
+                                               LTRIM(Str(sumatcompletiontotalcostvar, 25, 5)) as vac
+                                        FROM EPS WHERE objectid = #{options.eps_id};")
+  result.merge!(eps_query_result.first)
   eps_query_result.do
 
   result.to_json
