@@ -19,6 +19,10 @@
 <script type="text/javascript" src="js/modules/exporting.js"></script>
 <script type="text/javascript" src="js/jquery.doubletap.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
+
+<script type="text/javascript" src="js/jquery.reveal.js"></script>
+<link rel="stylesheet" href="css/reveal.css">
+
 		<title>PM Expert Dashboard</title>
 
 		<!-- Foundation framework -->
@@ -102,18 +106,13 @@
                                         <td id="eps_dir" colspan="2">В. А. Благовещенский</td>
                                     </tr>
 				    <tr>
-                                        <td><b>Дата начала</td>
-                                        <td id="start_date" style="background-color:#FFFFFF">09.01.2008</td>
-					<td><b>Дата окончания</td>
-                                        <td id="end_date" style="background-color:#FFFFFF">30.09.2015</td>
-                                    </tr>
-
-				    <tr >
-                                        <td colspan="2"><b>Отчет подготовил</td>
-                                        <td id="reporter" colspan="2">И. А. Кочетов</td>
+                                        <td width="25%"><b>Дата начала</td>
+                                        <td id="start_date" style="background-color:#FFFFFF" >09.01.2008</td>
+					<td width="25%"><b>Дата окончания</td>
+                                        <td id="end_date" style="background-color:#FFFFFF" >30.09.2015</td>
                                     </tr>
 				    <tr>
-                                        <td colspan="2"><b>Дата отчёта</td>
+                                        <td colspan="2"><b>Дата отчета</td>
                                         <td id="report_date" colspan="2">15.05.12</td>
                                     </tr>				
                                  
@@ -133,7 +132,7 @@
 <div>
 <div class="two columns">
     <div class="panel callout radius">
-      <br><br>
+      <img src="img/arr1.png"/><br>
       <h5>Факт <br> 35%</h5>
       <br>
     </div>
@@ -163,25 +162,25 @@
  </div>
 </div>
 
- <table cellpadding="0" cellspacing="0" border="0" class="display mobile_dt1 dt_act" id="dt1">
+ <table cellpadding="0" cellspacing="0" border="0" class="display mobile_dt1 dt_act" id="dt1" alt="text">
                                 <tbody>
                                     <tr >
                                     </tr>
 				    <tr>
                                         <td><b>Сроки</td>
-                                        <td style="background-color:white">&bull;</td>
+                                        <td style="background-color:white" align="center"><a href="#" data-reveal-id="myModal"><img src="img/red.png"  height="22px" width="22px"></a></td>
 					<td id="time_limits" style="background-color:white">Отсутствуют базовые показатели, т.к. базовый план не утвержден</td>
                                     </tr>
 				    <tr></tr>
                                     <tr>
                                         <td><b>Стоимость</td>
-                                        <td style="background-color:white">&bull;</td>
+                                        <td style="background-color:white" align="center"><a href="#" data-reveal-id="myModal2"><img src="img/green.png"  height="22px" width="22px"></a></td>
 					<td id="cost" style="background-color:white">Отсутствуют базовые показатели, т.к. базовый план не утвержден</td>
                                     </tr>
 				    <tr></tr>
 				    <tr>
                                         <td><b>Риски</td>
-                                        <td style="background-color:#FFFFFF">&bull;</td>
+                                        <td style="background-color:#FFFFFF" align="center"><a href="#" data-reveal-id="myModal3"><img src="img/yellow.png"  height="22px" width="22px"></a></td>
 					<td id="risks" style="background-color:white">4 критичных риска</td>
                                     </tr>				
                                  
@@ -199,7 +198,7 @@
 			</div>
 		</div>
 
-		<footer class="container" id="footer"><center><img src="img/plank.png" width=60/></center>
+		<footer class="container" id="footer"><center><img src="img/plank.png" width=60 /></center>
 		<div class="row">
                     Copyright © ЗАО «ПМ Эксперт»
 			</div>
@@ -207,6 +206,20 @@
 
 
 
-
+<div id="myModal" class="reveal-modal large">
+  <h6>Сроки (комментарий)</h6><br>
+  <p class="lead">Максимальное отставание по ключевым контрольным точкам соответствует Z месяцев.</p>
+  <a class="close-reveal-modal">Закрыть</a>
+</div>
+<div id="myModal2" class="reveal-modal large">
+  <h6>Стоимость (комментарий)</h6><br>
+  <p class="lead">Опережение\отставание соответствует Z месяцев.</p>
+  <a class="close-reveal-modal">Закрыть</a>
+</div>
+<div id="myModal3" class="reveal-modal large">
+  <h6>Риски (комментарий)</h6><br>
+  <p class="lead">Количество красных\желтых рисков Z.</p>
+  <a class="close-reveal-modal">Закрыть</a>
+</div>
 	</body>
 </html>

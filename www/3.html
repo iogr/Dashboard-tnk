@@ -83,84 +83,11 @@
 <a class="button white tiny radius nice" href="5.html"><font color="#7e2a38">5</font></a>&nbsp;<br><br>	
 
 <!-- Место под таблицу -->
+	
 
 <div class="twelve columns centered">
 	<div class="box_c_heading cf">
-							<p><center>Финансовые показатели Инвестиционного проекта</center></p>
-						</div>
- <table cellpadding="0" cellspacing="0" border="0" class="display mobile_dt2 dt_act" id="dt2">
-                                <tbody align="center">
-                                    <tr >
-                                        <td style="background-color:#B0BED9"><b>Показатель</td>
-                                        <td style="background-color:#B0BED9"><b>Единица измерения</td>
-					<td style="background-color:#B0BED9"><b>ФМ в текущей версии</td>
-					<td style="background-color:#B0BED9"><b>Прогноз на 06.12</td>
-					<td style="background-color:#B0BED9"><b>Отклонение</td>
-					
-                                    </tr><tr></tr>
-			            <tr>
-                                        <td>NPV</td>
-                                        <td >млн. долл.</td>
-					<td>4402</td>
-					<td>3312</td>
-					<td></td>
-				    </tr>
-			            <tr >
-                                        <td>PI</td>
-                                        <td>Ед.</td>
-					<td>2,2</td>
-					<td>1,82</td>
-					<td></td>
-				    </tr>
-			            <tr >
-                                        <td >IRR</td>
-                                        <td>%</td>
-					<td>41</td>
-					<td>29</td>
-					<td></td>
-				     </tr>
-			            <tr >
-                                        <td >DPP</td>
-                                        <td>год</td>
-					<td>2017</td>
-					<td>2020</td>
-					<td></td>
-				    </tr>
-              		            <tr >
-                                        <td >CAPEX</td>
-                                        <td>млн. долл.</td>
-					<td>5728</td>
-					<td>6703</td>
-					<td></td>
-				    </tr>
-              		            <tr >
-                                        <td >CAPEX дисконт</td>
-                                        <td>млн. долл.</td>
-					<td>-</td>
-					<td>3753</td>
-					<td></td>
-				    </tr>
-              		            <tr >
-                                        <td >Итого инвестиций</td>
-                                        <td>млн. долл.</td>
-					<td>6261</td>
-					<td>7483</td>
-					<td></td>
-				     </tr>
-<tr >
-                                        <td >Длительность</td>
-                                        <td>лет</td>
-					<td>30</td>
-					<td>30</td>
-					<td></td>
-				     </tr>
-                                </tbody>
-                            </table>
-
-<br>
-<div class="twelve columns centered">
-	<div class="box_c_heading cf">
-							<p><center>Показатели освоенного объема</center></p>
+							<p><center>Показатели соблюдения графика и освоенного объема</center></p>
 						</div>
 <div class="six columns centered">
  <table cellpadding="0" cellspacing="0" border="0" class="display mobile_dt2 dt_act" id="dt2">
@@ -214,8 +141,58 @@
                                 </tbody>
                             </table>
 </div>
-<!-- <div style="width:500px;overflow:hidden;height:251px;line-height:50px; margin: 0 auto"> --><div id="chart" style="width:500px;overflow:hidden;height:300px;line-height:50px; margin: 0 auto;"></div><!-- </div> -->
 
+<div class="five columns" id="chart" style="width:300px;overflow:hidden;"></div>
+<div class="six columns">
+
+ <table cellpadding="0" cellspacing="0" border="0" class="display mobile_dt2 dt_act" >
+                                <tbody align="center">
+                                    <tr >
+                                        <td colspan="5" style="background-color:#B0BED9"><b>Сроки</td>
+                                    
+                                    </tr>
+			            <tr><td colspan="2" style="background-color:#B0BED9"></td>
+                                        <td width=33% style="background-color:white">SV>0 & SPI>1</td>
+                                        <td width=33% style="background-color:white">SV=0 & SPI=1</td>
+					<td width=33% style="background-color:white">SV<0 & SPI<1</td>
+					
+				    </tr>
+					<tr></tr>
+			            <tr >
+					<td rowspan="5" style="background-color:#B0BED9"><style type="text/css">hv {
+	width:17px;
+	writing-mode:tb-rl;
+	-webkit-transform:rotate(-90deg);
+	-moz-transform:rotate(-90deg);
+	-o-transform: rotate(-90deg);
+	
+	display:block;
+ }</style><HV>Стоимость</HV></td> 
+					<td style="background-color:white">CV>0 & CPI>1</td>
+                                        <td style="color:white;background-color:#906d85">Опережение по графику и экономия по бюджету</td>
+                                        <td style="color:white;background-color:#8ab5e0">Соблюдение графика и экономия по бюджету</td>
+					<td style="color:white;background-color:#be425c">Отставание по графику и экономия по бюджету</td>
+					
+				    </tr>
+			            <tr >
+                                        <td id="ev" style="color:black;background-color:white">SV=0 & SPI=1</td>
+                                        <td id="ac" style="color:white;background-color:#8ab5e0">Опережение по график и соблюдение по бюджету</td>
+					<td id="pv" style="color:black;background-color:#cedbec">Соблюдение графика и соблюдение бюджета</td>
+					<td id="pv" style="color:white;background-color:#ed1b24">Соблюдение графика и перерасход по бюджету</td>
+					
+				    </tr>
+			            <tr >
+					<td id="pv" style="color:black;background-color:white">SV<0 & SPI<1</td>
+                                        <td id="ev" style="color:white;background-color:#be425c">Опережение по графику и перерасход по бюджету</td>
+                                        <td id="ac" style="color:white;background-color:#ed1b24">Соблюдение графика и перерасход по бюджету</td>
+					<td id="pv" style="color:white;background-color:#a1321f">Отставание по графику и перерасход по бюджету</td>
+					
+				    </tr>
+                                </tbody>
+                            </table>
+
+
+</div></div>
 
 
 <center><div id="plank"><img src="img/plank.png" alt="Pertho Admin" width=60/></div></center>
