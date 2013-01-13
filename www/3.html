@@ -4,10 +4,9 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery.doubletap.js"></script>
+<script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
 <script type="text/javascript" src="js/highcharts.js"></script>
 <script type="text/javascript" src="js/highcharts-more.js"></script>
-<script type="text/javascript" src="js/modules/exporting.js"></script>
 <script type="text/javascript" src="lib/jQueryUI/jquery-ui-1.8.18.custom.min.js"></script>
 <script type="text/javascript" src="js/s_scripts.js"></script>
 <script type="text/javascript" src="js/jquery.ui.extend.js"></script>
@@ -205,7 +204,17 @@
 		</footer>
 
 		
-		
+<script>				
+$(document).swipe({
+swipeLeft: function () {
+window.location = "4.html";
+		},
+
+swipeRight: function () {
+window.location = "2.html";
+		}
+});
+</script>		
 
 	</body>
 </html>

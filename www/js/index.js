@@ -1,29 +1,4 @@
 //swipe-related
-var forward = function () {
-    $("div").delay(1).animate({
-                right: "-=560px",
-                opacity: "0.2"
-            }, 200, function() {
-                window.location = "2.html";
-            });
-
-};
-
-var backward = function() {
-    $("div").delay(1).animate({
-                right: "+=560px",
-                opacity: "0.2"
-            }, 200, function() {
-                window.location = "2.html";
-            });
-
-};
-
-$(document).addSwipeEvents().
-  bind('swiperight', function(evt, touch) {
-    // triggered for swipe events
-    backward();
-});
 
 
 
