@@ -1,0 +1,27 @@
+таблица шириной N* 120px:
+
+строка из N стобцов 
+строка с 1 столбцом со свойством colspan="N", содержащая треугольники с План. датой КТ
+строка с 1 столбцом со свойством colspan="N", содержащая треугольники с Факт. датой КТ 
+---------------------------------------------------
+
+ширина таблицы = N месяцев * 120px
+
+т.е. месяц = 120 пикселов, но она смещена на 15 пикселове, поэтому
+
+формула координаты треугольника = 
+( (год2 - год1) * 360 + (месяц2 - месяц1)*30 + день2-день1 ) * 4 - 15 px
+
+формула координаты индекса КТ = формула координаты треугольника - 3 px
+
+---------------------------------------------------
+<table style="width:ФОРМУЛА ШИРИНЫ ТАБЛИЦЫpx;line-height:50px;" cellpadding="10" cellspacing="0" border="0" class="display mobile_dt2 dt_act">
+
+...
+
+<tr style="height:68px"><td  colspan="12" style="background-color:white"><img src="img/planarr.png" style="bottom:67px;left:ФОРМУЛА КООРД ТРЕУГОЛЬНИКАpx; position:absolute; z-index:1"/><label style="color:yellow;font-size:25px;bottom:-15px;left:ФОРМУЛА КООРД ИНДЕКСАpx; position:relative; z-index:2"><b>1</label> </td>
+
+<tr style="height:69px"><td  colspan="12" style="background-color:white"><img src="img/factarr.png" style="bottom:23px;left:ФОРМУЛА КООРД ТРЕУГОЛЬНИКАpx;position:absolute; z-index:3"/><label style="color:black;font-size:25px;bottom:20px;left:ФОРМУЛА КООРД ИНДЕКСАpx; position:relative; z-index:4"><b>1</label></td>
+
+
+
