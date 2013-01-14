@@ -16,7 +16,7 @@
 <script type="text/javascript" src="lib/jQplot/jqplot.plugins.js"></script>
 <script type="text/javascript" src="js/jquery.list.min.js"></script>
 <script type="text/javascript" src="js/pertho.js"></script>
-<script type="text/javascript" src="js/3.js"></script>
+<script type="text/javascript" src="js/5.js"></script>
 		<title>PM Expert Dashboard</title>
 
 		<!-- Foundation framework -->
@@ -113,12 +113,6 @@
 					<td style="width: 120px;background-color:white">февраль</td>
 					<td style="width: 120px;background-color:white">февраль</td>
 					<td style="width: 120px;background-color:white">февраль</td>
-					<td style="width: 120px;background-color:white">февраль</td>
-					<td style="width: 120px;background-color:white">февраль</td>
-					<td style="width: 120px;background-color:white">февраль</td>
-					<td style="width: 120px;background-color:white">февраль</td>
-					<td style="width: 120px;background-color:white">февраль</td>
-					<td style="width: 120px;background-color:white">февраль</td>
                                     </tr><tr></tr>
 			            <tr style="height:68px"><td  colspan="12" style="background-color:white"><img src="img/planarr.png" style="bottom:67px;left:800px; position:absolute; z-index:1"/><label style="color:white;font-size:25px;bottom:-15px;left:797px; position:relative; z-index:2"><b>1</label> </td>
 				    <tr style="height:69px"><td  colspan="12" style="background-color:white"><img src="img/factarr.png" style="bottom:23px;left:200px;position:absolute; z-index:3"/><label style="color:black;font-size:25px;bottom:20px;left:197px; position:relative; z-index:4"><b>1</label></td>
@@ -141,19 +135,13 @@
                                 </tbody>
                             </table>
 </div>
-<div style="width:93%;overflow:scroll;line-height:50px; margin: 0 auto;padding-top: -223px;margin-top:-223px;margin-left:6%" class="scrollDiv" >
+<div style="width:93%;line-height:50px; margin: 0 auto;padding-top: -223px;margin-top:-223px;margin-left:6%" class="scrollDiv" >
  <table style="width:1440px;line-height:50px;" cellpadding="10" cellspacing="0" border="0" class="display mobile_dt2 dt_act">
                                 <tbody>
                                     <tr align="center">
                                         <td style="width: 120px;background-color:white;">январь</td>
                                         <td style="width: 120px;background-color:white">февраль</td>
-					<td style="width: 120px;background-color:white">февраль</td>
-					<td style="width: 120px;background-color:white">февраль</td>
-					<td style="width: 120px;background-color:white">февраль</td>
-					<td style="width: 120px;background-color:white">февраль</td>
-					<td style="width: 120px;background-color:white">февраль</td>
-					<td style="width: 120px;background-color:white">февраль</td>
-					<td style="width: 120px;background-color:white">февраль</td>
+					                              <td style="width: 120px;background-color:white">февраль</td>
 					<td style="width: 120px;background-color:white">февраль</td>
 					<td style="width: 120px;background-color:white">февраль</td>
 					<td style="width: 120px;background-color:white">февраль</td>
@@ -166,36 +154,6 @@
                             </table>
 
   </div>
-<script>				
-$(document).swipe({
-
-swipeRight: function () {
-window.location = "4.html";
-		},
-		threshold:400
-});
-</script>
-<script> <!-- Синхронизация скроллов -->
-jQuery.fn.synchronizeScroll = function() {
-
-      var elements = this;
-            if (elements.length <= 1) return;
- 
-        elements.scroll(
-         function() {
-              var left = $(this).scrollLeft();
-              var top = $(this).scrollTop();
-              elements.each(
-               function() {
-                  if ($(this).scrollLeft() != left) $(this).scrollLeft(left);
-                  if ($(this).scrollTop() != top) $(this).scrollTop(top);
-               }
-              );
-          });
-       }
-
-$(".scrollDiv").synchronizeScroll();
-</script>
 
 
 

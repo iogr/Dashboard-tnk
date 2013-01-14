@@ -159,6 +159,37 @@ get '/data/4' do
   result.to_json
 end
 
+get '/data/5' do
+  result = {}
+
+  query_result = db_client.execute("SELECT a.name,
+                                           a.BaselineStartDate as planned,
+                                           a.ActualStartDate as actual
+                                    FROM ACTIVITY as a JOIN PROJECT as p
+                                    ON a.projectobjectid = p.objectid
+                                    WHERE p.parentepsobjectid = #{options.eps_id};")
+  result['activities'] =[]
+  query_result.each do |row|
+    # # next unless ['ПСТ', 'ПСР', 'ФСТ', 'ФСР'].include? row['value_name'].to_s
+    # result[row['value_name']] = []
+    # categories = []
+    # raw_values = row['raw_values']
+    # while raw_value = raw_values.slice!(/\d{6} \S+/)
+    #   date, value = raw_value.split
+    #   result[row['value_name']] << value
+    #   categories << date
+    # end
+    # result['categories'] = categories unless result['categories']
+    result['activities'] << row
+  end
+
+  # result['categories'].sort!
+
+  query_result.do
+
+  result.to_json
+end
+
 get '/db/:table' do
   result = []
   query_result = db_client.execute("SELECT * FROM #{params[:table]};")

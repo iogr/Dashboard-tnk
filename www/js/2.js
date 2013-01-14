@@ -5,8 +5,8 @@ var getData = function() {
     if (__data__ != null) {
         return __data__;
     } else {
-        // $.getJSON('http://94.127.69.63:8080/data/2', function(data) {
-        $.getJSON('data/2', function(data) {
+        $.getJSON('http://94.127.69.63:8080/data/2', function(data) {
+        // $.getJSON('data/2', function(data) {
             __data__ = data;
             setDataToDom(data);
             return data;
