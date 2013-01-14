@@ -34,18 +34,48 @@ var setDataToDom = function(data) {
     $('#reporter').html(data['reporter']);
     $('#report_date').html(data['report_date']);
     $('#est_end_date').html(data['est_end_date']);
-    $('#timelimits_text').html(data['timelimits_text']);
-    $('#cost').html(data['cost']);
+    // $('#timelimits_text').html(data['timelimits_text']);
+    // $('#cost').html(data['cost']);
+    
     $('#risks_text').html(data['risks_text']);
-    alert(data['risks_text']);
+    $('#myModal3').html(data['risks_text']);
+    if (data['risks_alert'] == "yellow") {
+        $('#risks_alert').html('<a href="#" data-reveal-id="myModal3"><img src="img/yellow.png" height="22px" width="22px"></a>');
+    } else if (data['risks_alert'] == "red") {
+        $('#risks_alert').html('<a href="#" data-reveal-id="myModal3"><img src="img/red.png" height="22px" width="22px"></a>');
+    } else {
+        $('#risks_alert').html('<img src="img/green.png"  height="22px" width="22px">');
+    };
 
-    plan_fact_gauge.series[0].points[0].update(parseFloat(data['gauge_percent']));
+    $('#timelimits_text').html(data['timelimits_text']);
+    $('#myModal').html(data['timelimits_text']);
+    if (data['timelimits_alert'] == "yellow") {
+        $('#timelimits_alert').html('<a href="#" data-reveal-id="myModal"><img src="img/yellow.png"  height="22px" width="22px"></a>');
+    } else if (data['timelimits_alert'] == "red") {
+        $('#timelimits_alert').html('<a href="#" data-reveal-id="myModal"><img src="img/red.png"  height="22px" width="22px"></a>');
+    } else {
+        $('#timelimits_alert').html('<img src="img/green.png"  height="22px" width="22px">');
+    };
 
-};
+    $('#cost_text').html(data['cost_text']);
+    $('#myModal2').html(data['cost_text']);
+    if (data['cost_alert'] == "yellow") {
+        $('#cost_alert').html('<a href="#" data-reveal-id="myModal3"><img src="img/yellow.png" height="22px" width="22px"></a>');
+    } else if (data['cost_alert'] == "red") {
+        $('#cost_alert').html('<a href="#" data-reveal-id="myModal3"><img src="img/red.png" height="22px" width="22px"></a>');
+    } else {
+        $('#cost_alert').html('<img src="img/green.png" height="22px" width="22px">');
+    };
 
-var plan_fact_gauge;
+    // alert(data['risks_text']);
 
-$(document).ready(function() {
+    // plan_fact_gauge.series[0].points[0].update(parseFloat(data['gauge_percent_actual']));
+    // plan_fact_gauge.series[0].points[1].update(parseFloat(data['gauge_percent_planned']));
+
+    $('#planned').append(parseFloat(data['gauge_percent_planned']) + '%');
+    $('#actual').append(parseFloat(data['gauge_percent_actual']) + '%');
+
+
     plan_fact_gauge = new Highcharts.Chart({
 
         chart: {
@@ -77,17 +107,41 @@ gauge: {
         },
 
 
-            series: {
-                dataLabels: {
-                    enabled: false,
-borderRadius:0,
-padding:10,
-x:-100,
-                    formatter: function() {
-                        return "Факт "+this.y +'%';
-                    }
+            series: [{
+                name: 'Plan',
+                dial: {
+                    backgroundColor: '#f46c5e',
+                    borderColor: '#a5b4b9',
+                    color: '#db241e',
+                    // radius:'90%',
+                    borderWidth: 1,
+                    baseWidth: 13,
+                    topWidth: 1,
+                    baseLength: '20%', // of radius
+                    rearLength: '0%'
+                },
+  
+                 data: [parseFloat(data['gauge_percent_planned'])]
+         
+            },{
+                name: 'Fact',
+                data: [parseFloat(data['gauge_percent_actual'])],
+                dial: {
+                    backgroundColor: '#f46c5e',
+                    borderColor: '#a5b4b9',
+                    color: '#111111',
+                    // radius:'90%',
+                    borderWidth: 1,
+                    baseWidth: 13,
+                    topWidth: 1,
+                    baseLength: '20%', // of radius
+                    rearLength: '0%'
+                },
+                tooltip: {
+                    valueSuffix: '%'
                 }
-            }
+            }],
+        // }]
         },
 
         pane: {
@@ -194,14 +248,28 @@ innerRadius: '67%'
         },
 
         series: [{
-            name: 'Данные',
-            data: [0],
+            name: 'Факт',
+            data: [parseFloat(data['gauge_percent_actual'])],
             tooltip: {
-                valueSuffix: 'факт/план'
+                valueSuffix: '%'
             }
-        }]
+            
+        },
+        {
+            name: 'План',
+            data: [parseFloat(data['gauge_percent_planned'])],
+            tooltip: {
+                valueSuffix: '%'
+            }}]
 
     });
+
+};
+
+var plan_fact_gauge;
+
+$(document).ready(function() {
+    
 
     getData();
 });

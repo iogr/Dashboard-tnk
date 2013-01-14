@@ -10,8 +10,11 @@ set :eps_id, 17730
 set :risk_red_score, 50
 set :risk_yellow_score, 10
 
-set :cost_red_score, 50000000000
-set :cost_yellow_score, 1000000
+set :cost_red_score, -1000000
+set :cost_yellow_score, 0
+
+set :timeline_red_score, 24
+set :timeline_yellow_score, 6
 
 
 db_client = TinyTds::Client.new(
@@ -40,7 +43,8 @@ get '/data/index' do
   # Сроки - time_limits
   # Стоимость - cost
   # Риски - risks
-  eps_query_result = db_client.execute("SELECT eps.sumcostpercentcomplete as gauge_percent,
+  eps_query_result = db_client.execute("SELECT eps.sumcostpercentcomplete as gauge_percent_actual,
+                                               eps.sumcostpercentofplanned as gauge_percent_planned,
                                                eps.name as eps_name,
                                                convert(varchar, eps.sumbaselinestartdate, 4) as start_date,
                                                convert(varchar, eps.sumbaselinefinishdate, 4) as end_date,
@@ -76,21 +80,38 @@ get '/data/index' do
     result['risks_alert'] = "green"
   end
 
-  # if not red_count.empty?
-  #   result['risks_text'] = "#{red_count} критичный риск"
-  #   result['risks_alert'] = "red"
-  # elsif not yellow_count.empty?
-  #   result['risks_text'] = "#{red_count} некритичный риск"
-  #   result['risks_alert'] = "yellow"
-  # else
-  #   result['risks_text'] = ""
-  #   result['risks_alert'] = "green"
-  # end
+  cost = result['cost'].to_f
+  if (cost < options.cost_red_score)
+    result['cost_alert'] = "red"
+  elsif (cost < options.cost_yellow_score)
+    result['cost_alert'] = "yellow"
+  else
+    result['cost_alert'] = "green"
+  end
 
+  if (cost < 0)
+    result['cost_text'] = "Отставание по графику составляет #{cost.abs} руб."
+  else
+    result['cost_text'] = "Опережение по графику составляет #{cost} руб."
+  end
 
+  query_result = db_client.execute("SELECT max(datediff(mm, a.BaselineStartDate, a.ActualStartDate)) as spread
+                                    FROM ACTIVITY as a JOIN PROJECT as p
+                                    ON a.projectobjectid = p.objectid
+                                    WHERE p.parentepsobjectid = #{options.eps_id};")
 
-  result['timelimits_text'] = "Отсутствуют базовые показатели, т.к. базовый план не утвержден"
+  timespread = query_result.first['spread'].to_i
+  result['timelimits_text'] = "Максимальное отставание по ключевым КТ соответвствует #{timespread} месяцев."
   result['timelimits_alert'] = "yellow"
+  query_result.do
+  
+  if (timespread > options.timeline_red_score)
+    result['timelimits_alert'] = "red"
+  elsif (timespread > options.timeline_yellow_score)
+    result['timelimits_alert'] = "yellow"
+  else
+    result['timelimits_alert'] = "green"
+  end
 
   result['eps_exec_dir'] = "А. М. Слепцов"
   result['eps_dir'] = "В. А. Благовещенский"
