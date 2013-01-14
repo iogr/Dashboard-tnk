@@ -49,19 +49,19 @@ var setDataToDom = function(data) {
     };
     
     for (index in data['ФСР']) {
-        $('#table_fsr_row').append('<td>' + data['ФСР'][index] + '</td>');
+        $('#table_fsr_row').append('<td>' + data['ФСР'][index] + '%</td>');
     };
 
     for (index in data['ФСТ']) {
-        $('#table_fst_row').append('<td>' + data['ФСТ'][index] + '</td>');
+        $('#table_fst_row').append('<td>' + data['ФСТ'][index] + '%</td>');
     };
 
     for (index in data['ПСТ']) {
-        $('#table_pst_row').append('<td>' + data['ПСТ'][index] + '</td>');
+        $('#table_pst_row').append('<td>' + data['ПСТ'][index] + '%</td>');
     };
 
     for (index in data['ПСР']) {
-        $('#table_psr_row').append('<td>' + data['ПСР'][index] + '</td>');
+        $('#table_psr_row').append('<td>' + data['ПСР'][index] + '%</td>');
     };
 
 

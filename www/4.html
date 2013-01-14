@@ -3,10 +3,24 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
 
-		<title>Pertho Admin Panel</title>
+    <script type="text/javascript" src="js/highcharts.js"></script>
+    <script type="text/javascript" src="js/highcharts-more.js"></script>
+
+    <script type="text/javascript" src="lib/jQueryUI/jquery-ui-1.8.18.custom.min.js"></script>
+    <script type="text/javascript" src="js/s_scripts.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.extend.js"></script>
+    <script type="text/javascript" src="lib/qtip2/jquery.qtip.min.js"></script>
+    <script type="text/javascript" src="lib/jQplot/jquery.jqplot.min.js"></script>
+    <script type="text/javascript" src="lib/jQplot/jqplot.plugins.js"></script>
+    <script type="text/javascript" src="js/jquery.list.min.js"></script>
+    <script type="text/javascript" src="js/pertho.js"></script>
+
+    <script type="text/javascript" src="js/4.js"></script>
+
+		<title>PM Expert Dashboard</title>
 
 		<!-- Foundation framework -->
 			<link rel="stylesheet" href="foundation/stylesheets/foundation.css">
@@ -19,7 +33,9 @@
 			<link href='css/opensans.css' rel='stylesheet' />
 			<link href='css/dosis.css' rel='stylesheet' />
 
-<link rel="stylesheet" href="lib/datatables/css/demo_table_jui.css" media="all" />
+<link rel="stylesheet" href="lib/datatables/css/demo_table_jui.css" media="all" />
+
+
 
 		<!-- Favicons and the like (avoid using transparent .png) -->
 			<link rel="shortcut icon" href="favicon.ico" />
@@ -31,43 +47,6 @@
 		<![endif]-->
 <script>
 
-
-function forward () {
-$("div").delay(1).animate({
-                right: "-=560px",
-                opacity: "0.2"
-            }, 200, function() {
-                window.location = "3.html";
-            });
-
-}
-
-function backward () {
-$("div").delay(1).animate({
-                right: "+=560px",
-                opacity: "0.2"
-            }, 200, function() {
-                window.location = "5.html";
-            });
-
-}
-
-$(document).addSwipeEvents().
-  bind('swipeleft', function(evt, touch) {
-    // triggered for swipe events
-forward ();
-
-
-});
-
-
-$(document).addSwipeEvents().
-  bind('swiperight', function(evt, touch) {
-    // triggered for swipe events
-backward ();
-
-
-});
 
 
 </script>
@@ -111,13 +90,13 @@ backward ();
 <div class="five columns" style="width:440px;overflow:hidden"><div class="five columns" id="spider" style="right:-80px;width:560px;height:330px;padding-top: -50px;margin-top:0px;margin-left:-90px"></div>
 						</div>
 <div class="four columns" style="overflow:hidden"><table cellpadding="0" cellspacing="0" border="0" class="display mobile_dt2 dt_act">
-                                <tbody align="center">
+                                <tbody id="works_table" align="center">
                                     <tr >
                                         <td style="background-color:#B0BED9"><b>Проект</td>
                                         <td width=7% style="background-color:#B0BED9"><b>План, %</td>
 					<td width=7% style="background-color:#B0BED9"><b>Факт, %</td>
 					
-                                    </tr><tr></tr>
+                                    </tr> <tr></tr><!--
 			            <tr>
                                         <td align="left">Проект</td>
                                         <td >0</td>
@@ -153,7 +132,7 @@ backward ();
                                         <td>0</td>
 					<td>-</td>
 					
-				    </tr>
+				    </tr> -->
                                 </tbody>
                             </table>	</div>						
 						
@@ -167,13 +146,13 @@ backward ();
 							<p><center>Критичные риски программы</center></p>
 						</div>
  <table cellpadding="0" cellspacing="0" border="0" class="display mobile_dt2 dt_act">
-                                <tbody align="center">
+                                <tbody id="risks_table" align="center">
                                     <tr >
                                         <td style="background-color:#B0BED9"><b>Риски</td>
                                         <td style="background-color:#B0BED9"><b>Мероприятия по устранению рисков</td>
 					<td style="background-color:#B0BED9"><b>Ответственный</td>
 					
-                                    </tr><tr></tr>
+                                    <!-- </tr><tr></tr>
 			            <tr>
                                         <td>Задержка в...</td>
                                         <td >млн. долл.</td>
@@ -193,27 +172,30 @@ backward ();
                                         <td >DPP</td>
                                         <td>год</td>
 					<td>2017</td>
-				    </tr>
+				    </tr> -->
 
                                 </tbody>
                             </table><br><div class="box_c_heading cf">
 							<p><center>Реестр запросов на изменение</center></p>
 						</div>
  <table cellpadding="0" cellspacing="0" border="0" class="display mobile_dt2 dt_act">
-                                <tbody align="center">
+                                <tbody id="documents_table" align="center">
                                     <tr >
                                         <td style="background-color:#B0BED9"><b>Запрос на изменение</td>
                                         <td width="15%" style="background-color:#B0BED9"><b>Дата</td>
 					<td width="15%" style="background-color:#B0BED9"><b>Статус</td>
-                                    </tr><tr></tr>
+                                    <!-- </tr><tr></tr>
 			            <tr>
                                         <td>Задержка в...</td>
                                         <td >млн. долл.</td>
 					<td>4402</td>
-				    </tr>
+				    </tr> -->
 
                                 </tbody>
-                            </table></div></div>	
+                            </table></div>
+</div>	
+
+
 		</div>
  
 
@@ -227,93 +209,6 @@ backward ();
 				</div>
 			</div>
 		</footer>
-
-		<script type="text/javascript">
-$(function () {
-
-	window.chart = new Highcharts.Chart({
-	            
-	    chart: {
-	        renderTo: 'spider',
-	        polar: true,
-	        type: 'line'
-	    },
-	    
-	    title: {
-	        text: '',
-	        x: -40
-	    },
-	    
-	    pane: {
-	    	size: '80%'
-	    },
-	    
-	    xAxis: {
-	        categories: ['Проект "НУ УКПГ"', 'Проект "ВУ УКПГиК', 'Проект "Обустройство ВУ и НУ"', 'Проект "Газопровод"', 
-	                'Проект "Конденсатопровод и межпромысловые.."', 'Проект "Жд налив"'],
-	        tickmarkPlacement: 'on',
-	        lineWidth: 0
-	    },
-	        
-	    yAxis: {
-	        gridLineInterpolation: 'polygon',
-	        lineWidth: 0,
-	        min: 0
-	    },
-	    
-	    tooltip: {
-	    	shared: true
-	        
-	    },
-	    
-	    legend: {
-	        align: 'right',
-	        verticalAlign: 'top',
-		x:-100,
-	        y: 20,
-		borderColor: '#FFFFFF',
-	        layout: 'vertical'
-	    },
-	    
-	    series: [{
-	        name: 'План, %',
-	        data: [43000, 19000, 60000, 35000, 17000, 10000],
-	        pointPlacement: 'on'
-	    }, {
-	        name: 'Факт, %',
-	        data: [50000, 39000, 42000, 31000, 26000, 14000],
-	        pointPlacement: 'on'
-	    }]
-	
-	});
-});
-		</script>
-
-<script>				
-$(document).swipe({
-swipeLeft: function () {
-window.location = "5.html";
-		},
-
-swipeRight: function () {
-window.location = "3.html";
-		}
-});
-</script>
-<script src="js/highcharts.js"></script>
-<script src="js/highcharts-more.js"></script>
-
-		<script src="js/jquery.min.js"></script>
-		<script src="lib/jQueryUI/jquery-ui-1.8.18.custom.min.js"></script>
-		<script src="js/s_scripts.js"></script>
-		<script src="js/jquery.ui.extend.js"></script>
-		<script src="lib/qtip2/jquery.qtip.min.js"></script>
-		<script src="lib/jQplot/jquery.jqplot.min.js"></script>
-		<script src="lib/jQplot/jqplot.plugins.js"></script>
-		<script src="js/jquery.list.min.js"></script>
-		<script src="js/pertho.js"></script>
-
-		
 
 	</body>
 </html>

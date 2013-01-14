@@ -113,6 +113,52 @@ get '/data/3' do
   result.to_json
 end
 
+get '/data/4' do
+  result = {}
+  query_result = db_client.execute("SELECT name, 
+                                           sumcostpercentofplanned as planned,
+                                           sumcostpercentcomplete as actual
+                                    FROM EPS
+                                    WHERE parentobjectid = #{options.eps_id};")
+  result['works'] = []
+  query_result.each{|row| result['works'] << row}
+  query_result.do
+
+  query_result = db_client.execute("SELECT r.name, 
+                                           rr.name as response,
+                                           res.name as responsible
+                                    FROM RISK as r 
+                                      LEFT JOIN RISKRESPONSEPLAN as rr ON rr.riskobjectid = r.objectid 
+                                      LEFT JOIN RESOURCES as res ON r.resourceobjectid = res.objectid
+                                      JOIN PROJECT as p ON r.projectobjectid = p.objectid
+                                      JOIN EPS as eps ON p.parentepsobjectid = eps.objectid
+                                    WHERE eps.objectid = #{options.eps_id} 
+                                      OR eps.parentobjectid = #{options.eps_id};")
+  result['risks'] = []
+  query_result.each{|row| result['risks'] << row}
+  query_result.do
+
+  # d.documentcategoryname = “Запрос на изменение”
+
+  query_result = db_client.execute("SELECT d.title, 
+                                           d.revisiondate as revision_date,
+                                           dsc.name as status
+                                    FROM DOCUMENT as d 
+                                      JOIN DOCUMENTSTATUSCODE as dsc ON d.documentstatuscodeobjectid = dsc.objectid 
+                                      JOIN PROJECT as p ON d.projectobjectid = p.objectid
+                                      JOIN EPS as eps ON p.parentepsobjectid = eps.objectid
+                                    WHERE eps.objectid = #{options.eps_id} 
+                                      OR eps.parentobjectid = #{options.eps_id}
+                                      ;")
+  result['documents'] = []
+  query_result.each{|row| result['documents'] << row}
+  query_result.do
+
+
+
+  result.to_json
+end
+
 get '/db/:table' do
   result = []
   query_result = db_client.execute("SELECT * FROM #{params[:table]};")
