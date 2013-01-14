@@ -35,6 +35,8 @@ var getData = function() {
     var maxdate;
     var report_date = new Date();
     report_date.setTime(Date.parse(data['report_date']));
+    var pre_i = 1;
+    var next_i = 1;
     $.each(data['activities'], function(i, act) {
       // alert(Date.parse(act['planned']));
       var pl = new Date();
@@ -55,12 +57,12 @@ var getData = function() {
       };
 
       if (pl < report_date) {
-        $('#previous_list').append('<tr><td style="background-color:white" width="4%">' + '</td>' +
+        $('#previous_list').append('<tr><td style="background-color:white" width="4%">' + pre_i++ + '</td>' +
                                         '<td>' + act['name'] + '</td>' +
                                         '<td>' + $.datepicker.formatDate('dd.mm.yy', pl) + '</td>' +
                                         '<td>' + (ac == null ? "" : $.datepicker.formatDate('dd.mm.yy', ac)) + '</td></tr>');
       } else {
-        $('#next_list').append('<tr><td style="background-color:white" width="4%">' + '</td>' +
+        $('#next_list').append('<tr><td style="background-color:white" width="4%">' + next_i++ + '</td>' +
                                         '<td>' + act['name'] + '</td>' +
                                         '<td>' + $.datepicker.formatDate('dd.mm.yy', pl) + '</td>' +
                                         '<td>' + (ac == null ? "" : $.datepicker.formatDate('dd.mm.yy', ac)) + '</td></tr>');
