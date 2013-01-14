@@ -230,8 +230,8 @@ get '/data/5' do
   result = {}
 
   query_result = db_client.execute("SELECT a.name,
-                                           a.BaselineStartDate as planned,
-                                           a.ActualStartDate as actual
+                                           convert(varchar, a.BaselineStartDate, 4) as planned,
+                                           convert(varchar, a.ActualStartDate, 4) as actual
                                     FROM ACTIVITY as a JOIN PROJECT as p
                                     ON a.projectobjectid = p.objectid
                                     WHERE p.parentepsobjectid = #{options.eps_id};")
@@ -254,7 +254,7 @@ get '/data/5' do
 
   query_result.do
 
-  query_result = db_client.execute("SELECT p.datadate as report_date
+  query_result = db_client.execute("SELECT convert(varchar, p.datadate, 4) as report_date
                                         FROM eps JOIN PROJECT as p ON p.parentepsobjectid = eps.objectid
                                         WHERE eps.objectid = #{options.eps_id};")
 

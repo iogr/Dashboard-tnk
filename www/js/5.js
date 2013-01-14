@@ -4,8 +4,8 @@ var getData = function() {
     if (__data__ != null) {
         return __data__;
     } else {
-        $.getJSON('http://94.127.69.63:8080/data/5', function(data) {
-        // $.getJSON('data/5', function(data) {
+        // $.getJSON('http://94.127.69.63:8080/data/5', function(data) {
+        $.getJSON('data/5', function(data) {
             __data__ = data;
             setDataToDom(data);
             return data;
@@ -33,14 +33,14 @@ var getData = function() {
       // // {dates: [new Date(2012, 3, 9), new Date(2012, 3, 11)], title: "Atlanta Braves @ Houston Astros", section: 1},
     var mindate;
     var maxdate;
-    var report_date = new Date();
-    report_date.setTime(Date.parse(data['report_date']));
+    var report_date = $.datepicker.parseDate('dd.mm.yy', data['report_date']);
+    // report_date.setTime(Date.parse(data['report_date']));
     var pre_i = 1;
     var next_i = 1;
     $.each(data['activities'], function(i, act) {
       // alert(Date.parse(act['planned']));
-      var pl = new Date();
-      pl.setTime(Date.parse(act['planned']));
+      var pl = $.datepicker.parseDate('dd.mm.yy', act['planned']);
+      // pl.setTime(Date.parse(act['planned']));
       if (mindate == null) {mindate = pl};
       if (maxdate == null) {maxdate = pl};
       if (maxdate < pl) {maxdate = pl};
@@ -49,8 +49,8 @@ var getData = function() {
       if (act['actual'] == null) {
         ac = null;
       } else {
-        var ac = new Date();
-        ac.setTime(Date.parse(act['actual']));
+        var ac = $.datepicker.parseDate('dd.mm.yy', act['actual']);
+        // ac.setTime(Date.parse(act['actual']));
         if (maxdate < ac) {maxdate = ac};
         if (mindate > ac) {mindate = ac};
         events.push({dates: [ac], title: act['name'], section: 0});
