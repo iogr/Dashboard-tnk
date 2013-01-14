@@ -50,7 +50,7 @@ get '/data/index' do
                                                convert(varchar, eps.sumbaselinefinishdate, 4) as end_date,
                                                convert(varchar, eps.finishdate, 4) as est_end_date,
                                                (EPS.SumPlannedTotalCost - EPS.SumActualTotalCost) as cost,
-                                               p.datadate as report_date
+                                               convert(varchar, p.datadate, 4) as report_date
 
                                         FROM eps JOIN PROJECT as p ON p.parentepsobjectid = eps.objectid
                                         WHERE eps.objectid = #{options.eps_id};")
