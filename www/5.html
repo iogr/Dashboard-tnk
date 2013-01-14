@@ -16,6 +16,8 @@
 <script type="text/javascript" src="lib/jQplot/jqplot.plugins.js"></script>
 <script type="text/javascript" src="js/jquery.list.min.js"></script>
 <script type="text/javascript" src="js/pertho.js"></script>
+<script type="text/javascript" src="lib/chronoline/raphael-min.js"></script>
+<script type="text/javascript" src="lib/chronoline/chronoline.js"></script>
 <script type="text/javascript" src="js/5.js"></script>
 		<title>PM Expert Dashboard</title>
 
@@ -44,6 +46,9 @@
 		<!-- Favicons and the like (avoid using transparent .png) -->
 			<link rel="shortcut icon" href="favicon.ico" />
 			<link rel="apple-touch-icon-precomposed" href="icon.png" />
+
+
+      <link rel="stylesheet" type="text/css" href="lib/chronoline/chronoline.css" />
 
 		<!--[if lt IE 9]>
 			<link rel="stylesheet" href="foundation/stylesheets/ie.css">
@@ -93,6 +98,7 @@
 </div>
 
 <div style="width:15%" class="display mobile_dt2 dt_act">
+<div id="timeline" style="width:800px;overflow:hidden;height:500px;line-height:50px; margin: 0 auto;"></div><!-- 
 <table cellpadding="0" cellspacing="0" border="0" class="display mobile_dt2 dt_act">
                                 <tbody>
                                     <tr style="height:50px">
@@ -154,7 +160,7 @@
                             </table>
 
   </div>
-
+ -->
 
 
 <div class="twelve columns centered">

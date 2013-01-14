@@ -4,7 +4,15 @@ require 'json'
 require 'tiny_tds'
 
 set :public_folder, File.dirname(__FILE__) + '/www'
+
 set :eps_id, 17730
+
+set :risk_red_score, 50
+set :risk_yellow_score, 10
+
+set :cost_red_score, 50000000000
+set :cost_yellow_score, 1000000
+
 
 db_client = TinyTds::Client.new(
 	:username => 'pxrptuser', 
@@ -32,20 +40,58 @@ get '/data/index' do
   # Сроки - time_limits
   # Стоимость - cost
   # Риски - risks
-  eps_query_result = db_client.execute("SELECT sumcostpercentcomplete as gauge_percent,
-                                               name as eps_name,
-                                               convert(varchar,sumbaselinestartdate, 4) as start_date,
-                                               convert(varchar, sumbaselinefinishdate, 4) as end_date,
-                                               convert(varchar, finishdate, 4) as est_end_date,
-                                               (EPS.SumPlannedTotalCost - EPS.SumActualTotalCost) as cost
+  eps_query_result = db_client.execute("SELECT eps.sumcostpercentcomplete as gauge_percent,
+                                               eps.name as eps_name,
+                                               convert(varchar, eps.sumbaselinestartdate, 4) as start_date,
+                                               convert(varchar, eps.sumbaselinefinishdate, 4) as end_date,
+                                               convert(varchar, eps.finishdate, 4) as est_end_date,
+                                               (EPS.SumPlannedTotalCost - EPS.SumActualTotalCost) as cost,
+                                               p.datadate as report_date
 
-                                        FROM EPS WHERE objectid = #{options.eps_id};")
+                                        FROM eps JOIN PROJECT as p ON p.parentepsobjectid = eps.objectid
+                                        WHERE eps.objectid = #{options.eps_id};")
   result.merge!(eps_query_result.first)
   eps_query_result.do
 
-  result['risks'] = "3 критичных риска"
-  result['time_limits'] = "Отсутствуют базовые показатели, т.к. базовый план не утвержден"
-  result['report_date'] = "15.05.12"
+  query_result = db_client.execute("SELECT r.score
+                                    FROM RISK as r
+                                      JOIN PROJECT as p ON r.projectobjectid = p.objectid
+                                      JOIN EPS as eps ON p.parentepsobjectid = eps.objectid
+                                    WHERE eps.objectid = #{options.eps_id} 
+                                      OR eps.parentobjectid = #{options.eps_id};")
+  risks = []
+  query_result.each{|row| risks << row['score'].to_i}
+  query_result.do
+
+  red_count = risks.count{|x| x >= options.risk_red_score}
+  yellow_count = risks.count{|x| x >= options.risk_yellow_score}
+  if red_count == 0
+    result['risks_text'] = "Количество красных рисков: #{red_count}"
+    result['risks_alert'] = "red"
+  elsif not yellow_count == 0
+    result['risks_text'] = "Количество жёлтых рисков: #{yellow_count}"
+    result['risks_alert'] = "yellow"
+  else
+    result['risks_text'] = ""
+    result['risks_alert'] = "green"
+  end
+
+  # if not red_count.empty?
+  #   result['risks_text'] = "#{red_count} критичный риск"
+  #   result['risks_alert'] = "red"
+  # elsif not yellow_count.empty?
+  #   result['risks_text'] = "#{red_count} некритичный риск"
+  #   result['risks_alert'] = "yellow"
+  # else
+  #   result['risks_text'] = ""
+  #   result['risks_alert'] = "green"
+  # end
+
+
+
+  result['timelimits_text'] = "Отсутствуют базовые показатели, т.к. базовый план не утвержден"
+  result['timelimits_alert'] = "yellow"
+
   result['eps_exec_dir'] = "А. М. Слепцов"
   result['eps_dir'] = "В. А. Благовещенский"
 

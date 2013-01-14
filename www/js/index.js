@@ -34,9 +34,10 @@ var setDataToDom = function(data) {
     $('#reporter').html(data['reporter']);
     $('#report_date').html(data['report_date']);
     $('#est_end_date').html(data['est_end_date']);
-    $('#time_limits').html(data['time_limits']);
+    $('#timelimits_text').html(data['timelimits_text']);
     $('#cost').html(data['cost']);
-    $('#risks').html(data['risks']);
+    $('#risks_text').html(data['risks_text']);
+    alert(data['risks_text']);
 
     plan_fact_gauge.series[0].points[0].update(parseFloat(data['gauge_percent']));
 
