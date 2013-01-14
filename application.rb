@@ -4,7 +4,7 @@ require 'json'
 require 'tiny_tds'
 
 set :public_folder, File.dirname(__FILE__) + '/www'
-set :eps_id, 3667
+set :eps_id, 17730
 
 db_client = TinyTds::Client.new(
 	:username => 'pxrptuser', 
@@ -50,6 +50,38 @@ get '/data/index' do
   result['eps_dir'] = "В. А. Благовещенский"
 
   
+
+  result.to_json
+end
+
+get '/data/2' do
+  result = {}
+  # ПСТ, ПСР, ФСТ, ФСР
+
+
+  query_result = db_client.execute("SELECT pn.notebooktopicname as value_name,
+                                           pn.rawtextnote as raw_values
+                                    FROM PROJECTNOTE as pn JOIN PROJECT as p
+                                    ON pn.projectobjectid = p.objectid
+                                    WHERE p.parentepsobjectid = #{options.eps_id};")
+  # result['1'] = query_result.as_array
+
+  query_result.each do |row|
+    # next unless ['ПСТ', 'ПСР', 'ФСТ', 'ФСР'].include? row['value_name'].to_s
+    result[row['value_name']] = []
+    categories = []
+    raw_values = row['raw_values']
+    while raw_value = raw_values.slice!(/\d{6} \S+/)
+      date, value = raw_value.split
+      result[row['value_name']] << value
+      categories << date
+    end
+    result['categories'] = categories unless result['categories']
+  end
+
+  # result['categories'].sort!
+
+  query_result.do
 
   result.to_json
 end
