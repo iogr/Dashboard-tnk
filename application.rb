@@ -254,6 +254,13 @@ get '/data/5' do
 
   query_result.do
 
+  query_result = db_client.execute("SELECT p.datadate as report_date
+                                        FROM eps JOIN PROJECT as p ON p.parentepsobjectid = eps.objectid
+                                        WHERE eps.objectid = #{options.eps_id};")
+
+  result['report_date'] = query_result.first['report_date']
+  query_result.do
+
   result.to_json
 end
 

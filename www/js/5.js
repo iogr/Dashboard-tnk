@@ -4,8 +4,8 @@ var getData = function() {
     if (__data__ != null) {
         return __data__;
     } else {
-        $.getJSON('http://94.127.69.63:8080/data/5', function(data) {
-        // $.getJSON('data/5', function(data) {
+        // $.getJSON('http://94.127.69.63:8080/data/5', function(data) {
+        $.getJSON('data/5', function(data) {
             __data__ = data;
             setDataToDom(data);
             return data;
@@ -33,6 +33,8 @@ var getData = function() {
       // // {dates: [new Date(2012, 3, 9), new Date(2012, 3, 11)], title: "Atlanta Braves @ Houston Astros", section: 1},
     var mindate;
     var maxdate;
+    var report_date = new Date();
+    report_date.setTime(Date.parse(data['report_date']));
     $.each(data['activities'], function(i, act) {
       // alert(Date.parse(act['planned']));
       var pl = new Date();
@@ -42,14 +44,31 @@ var getData = function() {
       if (maxdate < pl) {maxdate = pl};
       if (mindate > pl) {mindate = pl};
         // alert(pl);
-      var ac = new Date();
-      ac.setTime(Date.parse(act['actual']));
-      if (maxdate < ac) {maxdate = ac};
-      if (mindate > ac) {mindate = ac};
+      if (act['actual'] == null) {
+        ac = null;
+      } else {
+        var ac = new Date();
+        ac.setTime(Date.parse(act['actual']));
+        if (maxdate < ac) {maxdate = ac};
+        if (mindate > ac) {mindate = ac};
+        events.push({dates: [ac], title: act['name'], section: 0});
+      };
+
+      if (pl < report_date) {
+        $('#previous_list').append('<tr><td style="background-color:white" width="4%">' + '</td>' +
+                                        '<td>' + act['name'] + '</td>' +
+                                        '<td>' + $.datepicker.formatDate('dd.mm.yy', pl) + '</td>' +
+                                        '<td>' + (ac == null ? "" : $.datepicker.formatDate('dd.mm.yy', ac)) + '</td></tr>');
+      } else {
+        $('#next_list').append('<tr><td style="background-color:white" width="4%">' + '</td>' +
+                                        '<td>' + act['name'] + '</td>' +
+                                        '<td>' + $.datepicker.formatDate('dd.mm.yy', pl) + '</td>' +
+                                        '<td>' + (ac == null ? "" : $.datepicker.formatDate('dd.mm.yy', ac)) + '</td></tr>');
+      };
 
 
       events.push({dates: [pl], title: act['name'], section: 0});
-      events.push({dates: [ac], title: act['name'], section: 0});
+      
     });
 
     var timeline = new Chronoline(document.getElementById("timeline"), events, {
