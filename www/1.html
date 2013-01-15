@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- <script type="text/javascript" src="js/jquery.min1.js"></script> -->
+
+
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript" src="lib/jQueryUI/jquery-ui-1.8.18.custom.min.js"></script>
+<script type="text/javascript" src="js/s_scripts.js"></script>
+<script type="text/javascript" src="js/jquery.ui.extend.js"></script>
+<script type="text/javascript" src="lib/qtip2/jquery.qtip.min.js"></script>
+<script type="text/javascript" src="lib/jQplot/jquery.jqplot.min.js"></script>
+<script type="text/javascript" src="lib/jQplot/jqplot.plugins.js"></script>
+<script type="text/javascript" src="js/jquery.list.min.js"></script> 
+<script type="text/javascript" src="js/highcharts.js"></script>
+<script type="text/javascript" src="js/highcharts-more.js"></script>
+
+<script type="text/javascript" src="js/index.js"></script>
+
+<script type="text/javascript" src="js/jquery.reveal.js"></script>
+<link rel="stylesheet" href="css/reveal.css">
+
+		<title>PM Expert Dashboard</title>
+
+		<!-- Foundation framework -->
+			<link rel="stylesheet" href="foundation/stylesheets/foundation.css">
+		<!-- jquery UI -->
+			<link rel="stylesheet" href="lib/jQueryUI/css/Aristo/Aristo.css" media="all" />
+		<!-- jQplot (charts) -->
+			<link rel="stylesheet" href="lib/jQplot/jquery.jqplot.css" media="all" />
+		<!-- fancybox -->
+			<link rel="stylesheet" href="lib/fancybox/jquery.fancybox-1.3.4.css" media="all" />
+<link rel="stylesheet" href="lib/datatables/css/demo_table_jui.css" media="all" />
+
+		<!-- fullcalendar -->
+		<!-- tooltips -->
+			<link rel="stylesheet" href="lib/qtip2/jquery.qtip.min.css" />
+		<!-- main styles -->
+			<link rel="stylesheet" href="css/style.css" />
+
+		<!-- Google fonts -->
+			<link href='css/opensans.css' rel='stylesheet' />
+			<link href='css/dosis.css' rel='stylesheet' />
+
+		<!-- Favicons and the like (avoid using transparent .png) -->
+			<link rel="shortcut icon" href="favicon.ico" />
+			<link rel="apple-touch-icon-precomposed" href="icon.png" />
+
+		<!--[if lt IE 9]>
+			<link rel="stylesheet" href="foundation/stylesheets/ie.css">
+		
+	<![endif]-->
+
+	</head>
+	<body class="ptrn_a grdnt_a mhover_a">
+<div class="meny" style="
+	background-color: #222;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGklEQVQIW2NkYGD4D8SMQAwGcAY2AbBKDBUAVuYCBQPd34sAAAAASUVORK5CYII=);
+	background-repeat: repeat;
+
+	font-color:gray;
+	font-size: 17px;
+	color: #e1e1e1;"><br><div style="padding-left:8px">
+			<h4 style="color:white">&nbsp;Оглавление</h4>
+			<br>
+				<li type="1" style="padding-bottom: 10px"><a style="color: inherit;" href="1.html">Общие сведения о Программе</a></li>
+				<li  type="1" style="padding-bottom: 10px"><a style="color: inherit;" href="1.html">Ход выполнения программы</a></li>
+				<li  type="1"  style="padding-bottom: 10px"><a style="color: inherit;"  href="2.html">Основные показатели хода реализации Программы</a></li>
+				<li  type="1" style="padding-bottom: 10px"><a style="color: inherit;"  href="3.html">Показатели соблюдения графика и освоенного объема</a></li>
+				<li  type="1"  style="padding-bottom: 10px"><a style="color: inherit;"  href="4.html">Проведение работ по проектам Программы (1 очередь)</a></li>
+				<li type="1"  style="padding-bottom: 10px"><a style="color: inherit;"  href="4.html">Критичные риски программы</a></li>
+				<li  type="1" style="padding-bottom: 10px"><a style="color: inherit;"  href="4.html">Реестр запросов на изменение</a></li>
+				<li  type="1"  style="padding-bottom: 10px"><a style="color: inherit;"  href="5.html">Контрольные точки Программы</a></li>
+			</ul>
+				</div>
+
+		</div><div class="contents"> 
+	<header>
+			<div class="container head_s_a">
+				<div class="row sepH_b">
+					<div class="six columns">
+						<div class="row">
+							<div class="seven phone-two columns">
+								<div id="logo">
+									<img src="img/logo.png" alt="Dashboard"/>		
+								</div>
+							</div>
+							
+							
+						</div>
+					</div><img src="img/shap.png" alt="Dashboard" width=350 height=60px align="left" />
+				
+				</div>
+			</div>
+	
+
+	</header>
+		<div class="container">	
+			<div class="row">	
+	&nbsp;&nbsp;&nbsp;&nbsp;<a class="button black tiny radius" href="#">1</a>&nbsp;
+<a class="button white tiny radius nice" href="2.html"><font color="#7e2a38">2</font></a>&nbsp;
+<a class="button white tiny radius nice" href="3.html"><font color="#7e2a38">3</font></a>&nbsp;
+<a class="button white tiny radius nice" href="4.html"><font color="#7e2a38">4</font></a>&nbsp;
+<a class="button white tiny radius nice" href="5.html"><font color="#7e2a38">5</font></a>&nbsp;<br><br>	
+
+<!-- Место под таблицу -->
+
+<div class="eleven columns">
+	<div class="box_c_heading cf">
+							<p><center>Общие сведения о Программе</center></p>
+						</div>
+ <table cellpadding="0" cellspacing="0" border="0" class="display mobile_dt1 dt_act" id="dt1">
+                                <tbody>
+                                    <tr >
+                                        <td colspan="2"><b>Полное наименование программы</td>
+                                        <td id="eps_name" colspan="2">Программа газовых проектов ЗАО "РОСПАН ИНТЕРНЕШНЛ"</td>
+                                    </tr>
+				    <tr>
+                                        <td colspan="2"><b>Исполнительный директор программы</td>
+                                        <td id="eps_exec_dir" colspan="2">А. М. Слепцов</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"><b>Директор программы</td>
+                                        <td id="eps_dir" colspan="2">В. А. Благовещенский</td>
+                                    </tr>
+				    <tr>
+                                        <td width="25%"><b>Дата начала</td>
+                                        <td id="start_date" style="background-color:#FFFFFF" >09.01.2008</td>
+					<td width="25%"><b>Дата окончания</td>
+                                        <td id="end_date" style="background-color:#FFFFFF" >30.09.2015</td>
+                                    </tr>
+				    <tr>
+                                        <td colspan="2"><b>Дата отчета</td>
+                                        <td id="report_date" colspan="2">15.05.12</td>
+                                    </tr>				
+                                 
+                                </tbody>
+                            </table>
+</div>
+				<div class="twelve columns centered">
+					<div class="box_c">
+						<div class="box_c_heading cf">
+							<p>Ход выполнения Программы</p>
+						</div>
+	
+						<div class="box_c_content">							
+						<a href="2.html" style="decoration:none;text-decoration: none;color: inherit"><div style="width:500px;overflow:hidden;height:251px;line-height:50px; margin: 0 auto"><div id="plan_fact_gauge" style="width:500px;overflow:hidden;height:600px;line-height:50px; margin: 0 auto; padding-top: -80px;margin-top:-80px"></div></div></a>
+
+
+<div>
+<div class="two columns">
+    <div class="panel callout radius">
+      <img src="img/arr1.png"/><br>
+      <h5 id="actual">Факт <br> </h5>
+      <br>
+    </div>
+ </div>
+
+<div class="eight columns"><br><br><br><br>
+<table cellpadding="0" cellspacing="0" border="0" class="display mobile_dt1 dt_act" id="dt3" height=40>
+                                <tbody>
+                                    <tr >                        
+					<td rowspan="2" style="background-color:gray;color:white"><b>Прогнозная дата окончания Программы</td>
+                                        <td id="est_end_date" rowspan="2" style="background-color:gray;color:white">17.11.2015</td>
+			            </tr> 
+
+            <tr >                        
+			            </tr> 
+			
+				</tbody>
+</table>
+</div>
+
+<div class="two columns">
+    <div class="panel callout radius">
+      <img src="img/arr2.png"/><br>
+      <h5 id="planned">План <br> </h5>
+      <br>
+    </div>
+ </div>
+</div>
+
+ <a href="2.html" style="color: inherit"><table cellpadding="0" cellspacing="0" border="0" class="display mobile_dt1 dt_act" id="dt1" alt="text">
+                                <tbody>
+                                    <tr >
+                                    </tr>
+				    <tr>
+                                        <td><b>Сроки</td>
+                                        <td id="timelimits_alert" style="background-color:white" align="center"></td>
+					<td id="timelimits_text" style="background-color:white">Отсутствуют базовые показатели, т.к. базовый план не утвержден</td>
+                                    </tr>
+				    <tr></tr>
+                                    <tr>
+                                        <td><b>Стоимость</td>
+                                        <td id="cost_alert" style="background-color:white" align="center"></td>
+					<td id="cost_text" style="background-color:white">Отсутствуют базовые показатели, т.к. базовый план не утвержден</td>
+                                    </tr>
+				    <tr></tr>
+				    <tr>
+                                        <td><b>Риски</td>
+                                        <td id="risks_alert" style="background-color:#FFFFFF" align="center"></td>
+					<td id="risks_text" style="background-color:white"></td>
+                                    </tr>				
+                                 
+                                </tbody>
+                            </table></a>		
+						</div>
+
+
+			</div>
+				</div>
+
+
+				
+				</div>
+			</div>
+		
+
+		<footer class="container"><center><img src="img/plank.png" width=60 /></center>
+		<div class="row" id="footer">
+                    Copyright © ЗАО «ПМ Эксперт»
+			</div>
+		</footer></div>		
+
+
+
+<div id="myModal" class="reveal-modal large">
+  <h6>Сроки (комментарий)</h6><br>
+  <p class="lead">Максимальное отставание по ключевым контрольным точкам соответствует Z месяцев.</p>
+  <a class="close-reveal-modal">Закрыть</a>
+</div>
+<div id="myModal2" class="reveal-modal large">
+  <h6>Стоимость (комментарий)</h6><br>
+  <p class="lead">Опережение\отставание соответствует Z месяцев.</p>
+  <a class="close-reveal-modal">Закрыть</a>
+</div>
+<div id="myModal3" class="reveal-modal large">
+  <h6>Риски (комментарий)</h6><br>
+  <p class="lead">Количество красных\желтых рисков Z.</p>
+  <a class="close-reveal-modal">Закрыть</a>
+</div>
+
+
+
+
+
+
+
+
+<script>				
+$(document).swipe({
+swipeLeft: function () {
+window.location = "2.html";
+		}
+});									
+</script>
+
+</script>
+		<script src="js/meny.min.js"></script>
+		<script>
+			// Create an instance of Meny
+			var meny = Meny.create({
+				// The element that will be animated in from off screen
+				menuElement: document.querySelector( '.meny' ),
+
+				// The contents that gets pushed aside while Meny is active
+				contentsElement: document.querySelector( '.contents' ),
+
+				// [optional] The alignment of the menu (top/right/bottom/left)
+				position: Meny.getQuery().p || 'left',
+
+				// [optional] The height of the menu (when using top/bottom position)
+				height: 200,
+
+				// [optional] The width of the menu (when using left/right position)
+				width: 260,
+
+				// [optional] Distance from mouse (in pixels) when menu should open
+				threshold: 40
+			});
+
+			// API Methods:
+			// meny.open();
+			// meny.close();
+			// meny.isOpen();
+			
+			// Events:
+			// meny.addEventListener( 'open', function(){ console.log( 'open' ); } );
+			// meny.addEventListener( 'close', function(){ console.log( 'close' ); } );
+
+			// Embed an iframe if a URL is passed in
+			if( Meny.getQuery().u && Meny.getQuery().u.match( /^http/gi ) ) {
+				var contents = document.querySelector( '.contents' );
+				contents.style.padding = '0px';
+				contents.innerHTML = '<div class="cover"></div><iframe src="'+ Meny.getQuery().u +'" style="width: 100%; height: 100%; border: 0; position: absolute;"></iframe>';
+			}
+		</script>
+
+
+	</body>
+</html>

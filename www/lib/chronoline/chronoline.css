@@ -55,7 +55,7 @@
     background-position: -10px 0;
 }
 .tooltip-style {
-    font-size: 12px;
+    font-size: 20px;
     background-color: #222222;
     color: #ffffff;
     border-radius: 2px;
@@ -63,6 +63,7 @@
 }
 
 .chronoline-draggable {
+ 
   cursor:hand;
   cursor:grab;
   cursor:-moz-grab;

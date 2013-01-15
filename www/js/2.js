@@ -173,7 +173,7 @@ window.location = "3.html";
         },
 
 swipeRight: function () {
-window.location = "index.html";
+window.location = "1.html";
         }
 });
 

@@ -53,7 +53,7 @@ var getData = function() {
         // ac.setTime(Date.parse(act['actual']));
         if (maxdate < ac) {maxdate = ac};
         if (mindate > ac) {mindate = ac};
-        events.push({dates: [ac], title: '\u0424\u0430\u043A\u0442\u003A\u0020'+ act['name'], section: 0});
+        events.push({dates: [ac], title: act['name'], section: 0});
       };
 
       if (pl < report_date) {
@@ -69,21 +69,15 @@ var getData = function() {
       };
 
 
-      events.push({dates: [pl], title: '\u041F\u043B\u0430\u043D\u003A\u0020'+act['name'], section: 2, description: pl});
+      events.push({dates: [pl], title: act['name'], section: 2});
       
     });
-
- var sections = [{dates: [mindate, maxdate], title: "Fact", section:0, attrs: {fill: "#d4e3fd"}},
-		{dates: [mindate, maxdate], title: "Plan", section: 2, attrs: {fill: "#d4e3fd"}}];
-
 
     var timeline = new Chronoline(document.getElementById("timeline"), events, {
       visibleSpan: DAY_IN_MILLISECONDS * 366,
       eventHeight: 20,
-      eventMargin: 10,
-      dateLabelHeight: 50,
       animated: true,
-      tooltips: true, 
+      tooltips: true,
       defaultStartDate: mindate,
       labelInterval: isHalfMonth,
       hashInterval: isHalfMonth,
@@ -91,8 +85,8 @@ var getData = function() {
       scrollRight: nextQuarter,
       floatingSubLabels: false,
       // sections: [{dates: [new Date(2011, 2, 31), new Date(2013, 9, 28)], title: "2011 MLB Season", section: 0, attrs: {fill: "#d4e3fd"}}],
-      sections: sections,
-	
+      sections: [{dates: [mindate, maxdate], title: "Actual", section:0, attrs: {fill: "#d4e3fd"}},
+		{dates: [mindate, maxdate], title: "Plan", section: 2, attrs: {fill: "#d4e3fd"}}],
       sectionLabelAttrs: {'fill': '#997e3d', 'font-weight': 'bold'},
       markToday: 'labelBox',
       draggable: true

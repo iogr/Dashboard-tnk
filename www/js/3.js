@@ -54,7 +54,7 @@
                     align: 'high'
                 },
                 labels: {
-                    overflow: 'justify'
+                    enabled: 'justify'
                 }
             },
             tooltip: {

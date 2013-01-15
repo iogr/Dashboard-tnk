@@ -10,7 +10,7 @@
 
 DAY_IN_MILLISECONDS = 86400000;
 
-var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+var monthNames = ['Январь', 'Февраль', 'Мар�', 'Апрель', 'Май', 'юнь', 'юль', 'Авгус�', 'Сентярь', 'Октябрь', 'Ноябрь', 'Декабрь'];
 
 requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || function( callback, element){
     return window.setTimeout(function(){callback(+new Date());}, 1000 / 60);

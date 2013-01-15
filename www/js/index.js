@@ -38,7 +38,7 @@ var setDataToDom = function(data) {
     // $('#cost').html(data['cost']);
     
     $('#risks_text').html(data['risks_text']);
-    $('#myModal3').html(data['risks_text']);
+    $('#myModal3').html(data['risks_text' ]+ '<a class="close-reveal-modal">Закрыть</a>');
     if (data['risks_alert'] == "yellow") {
         $('#risks_alert').html('<a href="#" data-reveal-id="myModal3"><img src="img/yellow.png" height="22px" width="22px"></a>');
     } else if (data['risks_alert'] == "red") {
@@ -107,41 +107,15 @@ gauge: {
         },
 
 
-            series: [{
-                name: 'Plan',
-                dial: {
-                    backgroundColor: '#f46c5e',
-                    borderColor: '#a5b4b9',
-                    color: '#db241e',
-                    // radius:'90%',
-                    borderWidth: 1,
-                    baseWidth: 13,
-                    topWidth: 1,
-                    baseLength: '20%', // of radius
-                    rearLength: '0%'
-                },
-  
-                 data: [parseFloat(data['gauge_percent_planned'])]
-         
-            },{
-                name: 'Fact',
-                data: [parseFloat(data['gauge_percent_actual'])],
-                dial: {
-                    backgroundColor: '#f46c5e',
-                    borderColor: '#a5b4b9',
-                    color: '#111111',
-                    // radius:'90%',
-                    borderWidth: 1,
-                    baseWidth: 13,
-                    topWidth: 1,
-                    baseLength: '20%', // of radius
-                    rearLength: '0%'
-                },
-                tooltip: {
-                    valueSuffix: '%'
+                        series: {
+                dataLabels: {
+                    enabled: false,
+borderRadius:0,
+padding:10,
+x:-100,
+                    
                 }
-            }],
-        // }]
+            }
         },
 
         pane: {
@@ -247,20 +221,36 @@ innerRadius: '67%'
 }]        
         },
 
-        series: [{
+        series: [ {
+            name: 'План',
+	  dial: {
+
+                    backgroundColor: '#FFFFFF',
+                    borderColor: 'gray',
+      color: '#db241e',
+      radius:'90%',
+                    borderWidth: 2,
+                    baseWidth: 12,
+                    topWidth: 1,
+                    baseLength: '20%', // of radius
+                    rearLength: '0%'
+                },
+            data: [parseFloat(data['gauge_percent_planned'])],
+            tooltip: {
+                valueSuffix: '%'
+            }}, {
             name: 'Факт',
+            dial: {
+	    radius:'90%',
+		  },
+		 
             data: [parseFloat(data['gauge_percent_actual'])],
             tooltip: {
                 valueSuffix: '%'
             }
             
-        },
-        {
-            name: 'План',
-            data: [parseFloat(data['gauge_percent_planned'])],
-            tooltip: {
-                valueSuffix: '%'
-            }}]
+        }
+       ]
 
     });
 
