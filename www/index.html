@@ -3,239 +3,120 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<!-- <script type="text/javascript" src="js/jquery.min1.js"></script> -->
-
-
-<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
-<script type="text/javascript" src="lib/jQueryUI/jquery-ui-1.8.18.custom.min.js"></script>
-<script type="text/javascript" src="js/s_scripts.js"></script>
-<script type="text/javascript" src="js/jquery.ui.extend.js"></script>
-<script type="text/javascript" src="lib/qtip2/jquery.qtip.min.js"></script>
-<script type="text/javascript" src="lib/jQplot/jquery.jqplot.min.js"></script>
-<script type="text/javascript" src="lib/jQplot/jqplot.plugins.js"></script>
-<script type="text/javascript" src="js/jquery.list.min.js"></script> 
-<script type="text/javascript" src="js/highcharts.js"></script>
-<script type="text/javascript" src="js/highcharts-more.js"></script>
-
-<script type="text/javascript" src="js/index.js"></script>
-
-<script type="text/javascript" src="js/jquery.reveal.js"></script>
-<link rel="stylesheet" href="css/reveal.css">
-
-		<title>PM Expert Dashboard</title>
+		<title>PM Expert - Login Page</title>
 
 		<!-- Foundation framework -->
-			<link rel="stylesheet" href="foundation/stylesheets/foundation.css">
-		<!-- jquery UI -->
-			<link rel="stylesheet" href="lib/jQueryUI/css/Aristo/Aristo.css" media="all" />
-		<!-- jQplot (charts) -->
-			<link rel="stylesheet" href="lib/jQplot/jquery.jqplot.css" media="all" />
-		<!-- fancybox -->
-			<link rel="stylesheet" href="lib/fancybox/jquery.fancybox-1.3.4.css" media="all" />
-<link rel="stylesheet" href="lib/datatables/css/demo_table_jui.css" media="all" />
-
-		<!-- fullcalendar -->
-		<!-- tooltips -->
-			<link rel="stylesheet" href="lib/qtip2/jquery.qtip.min.css" />
-		<!-- main styles -->
+			<link rel="stylesheet" href="foundation/stylesheets/foundation.css" />
 			<link rel="stylesheet" href="css/style.css" />
-
-		<!-- Google fonts -->
-			<link href='css/opensans.css' rel='stylesheet' />
-			<link href='css/dosis.css' rel='stylesheet' />
 
 		<!-- Favicons and the like (avoid using transparent .png) -->
 			<link rel="shortcut icon" href="favicon.ico" />
 			<link rel="apple-touch-icon-precomposed" href="icon.png" />
-
-		<!--[if lt IE 9]>
-			<link rel="stylesheet" href="foundation/stylesheets/ie.css">
-		
-	<![endif]-->
-
 	</head>
-	<body class="ptrn_a grdnt_a mhover_a">
+	<body class="ptrn_a grdnt_a" style="background-image:url('img/bg_e.png')">
+		<div class="container">
+            
+   
+            <br><br><br><br><br><br>
+			<div class="row">
+				<div class="six columns centered">
+					<div class="login_box" style="top:100px;left:-60px;background-color:gray;width:450px" >
+						<div class="lb_content"><img class="right" src="img/shap.png" style:"padding-top:-10px;left:-100px" width="250px">
+                            <div class="login_logo" style="top:10px;left:10px"><img src="img/logo.png" width="150px" alt="" /></div>
+							<div class="cf">
+								<h2 class="lb_ribbon lb_dgray" align = "right"  style="background-color:#7e2a38;width:270px;top:30px"><span>Введите пароль доступа к программе</span><span style="display:none">New password</span></h2>
+								
+							</div><br>
+							<div class="row m_cont " >
+								<div class="five columns centered" >
+									<div class="l_pane" >
+										<form action="dashboard.html" method="post" class="nice" id="l_form">
+											<div class="sepH_c">
 
-	<header>
-			<div class="container head_s_a">
-				<div class="row sepH_b">
-					<div class="six columns">
-						<div class="row">
-							<div class="seven phone-two columns">
-								<div id="logo">
-									<img src="img/logo.png" alt="Dashboard"/>		
+												<div class="elVal">
+													<input style="width:300px;height:40px;margin-top:30px;margin-left:-70px" type="password" id="password" name="password" class="oversize normal input-text" value="admin" />
+												</div>
+											</div>
+											
+										</form>
+									</div><div>
+											<a href="1.html"><input style="background-color:#2b8cbe;top:0px;right:-10px;padding-right:-50px" type="submit" class="button large radius center black" value="Вход" />
+											</div>
+									<div class="l_pane" style="display:none">
+										<form action="dashboard.html" method="post" class="nice" id="rp_form">
+											<div class="sepH_c">
+												<p class="sepH_b">Please enter your email address. You will receive a link to create a new password via email.</p>
+												<div class="elVal">
+													<label for="upname">E-mail:</label>
+													<input type="text" id="upname" name="upname" class="oversize expand input-text" />
+												</div>
+											</div>
+											<div class="cf">
+												<input type="submit" class="button small radius right black" value="Get new password" />
+											</div>
+										</form>
+									</div>
 								</div>
 							</div>
-							
-							
 						</div>
-					</div><img src="img/shap.png" alt="Dashboard" width=350 height=60px align="left" />
-				
-				</div>
-			</div>
-	
-
-	</header>
-		<div class="container">	
-			<div class="row">	
-	&nbsp;&nbsp;&nbsp;&nbsp;<a class="button black tiny radius" href="#">1</a>&nbsp;
-<a class="button white tiny radius nice" href="2.html"><font color="#7e2a38">2</font></a>&nbsp;
-<a class="button white tiny radius nice" href="3.html"><font color="#7e2a38">3</font></a>&nbsp;
-<a class="button white tiny radius nice" href="4.html"><font color="#7e2a38">4</font></a>&nbsp;
-<a class="button white tiny radius nice" href="5.html"><font color="#7e2a38">5</font></a>&nbsp;<br><br>	
-
-<!-- Место под таблицу -->
-
-<div class="eleven columns">
-	<div class="box_c_heading cf">
-							<p><center>Общие сведения о Программе</center></p>
-						</div>
- <table cellpadding="0" cellspacing="0" border="0" class="display mobile_dt1 dt_act" id="dt1">
-                                <tbody>
-                                    <tr >
-                                        <td colspan="2"><b>Полное наименование программы</td>
-                                        <td id="eps_name" colspan="2">Программа газовых проектов ЗАО "РОСПАН ИНТЕРНЕШНЛ"</td>
-                                    </tr>
-				    <tr>
-                                        <td colspan="2"><b>Исполнительный директор программы</td>
-                                        <td id="eps_exec_dir" colspan="2">А. М. Слепцов</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2"><b>Директор программы</td>
-                                        <td id="eps_dir" colspan="2">В. А. Благовещенский</td>
-                                    </tr>
-				    <tr>
-                                        <td width="25%"><b>Дата начала</td>
-                                        <td id="start_date" style="background-color:#FFFFFF" >09.01.2008</td>
-					<td width="25%"><b>Дата окончания</td>
-                                        <td id="end_date" style="background-color:#FFFFFF" >30.09.2015</td>
-                                    </tr>
-				    <tr>
-                                        <td colspan="2"><b>Дата отчета</td>
-                                        <td id="report_date" colspan="2">15.05.12</td>
-                                    </tr>				
-                                 
-                                </tbody>
-                            </table>
-</div>
-				<div class="twelve columns centered">
-					<div class="box_c">
-						<div class="box_c_heading cf">
-							<p>Ход выполнения Программы</p>
-						</div>
-	
-						<div class="box_c_content">							
-						<a href="2.html" style="decoration:none;text-decoration: none;color: inherit"><div style="width:500px;overflow:hidden;height:251px;line-height:50px; margin: 0 auto"><div id="plan_fact_gauge" style="width:500px;overflow:hidden;height:600px;line-height:50px; margin: 0 auto; padding-top: -80px;margin-top:-80px"></div></div></a>
-
-
-<div>
-<div class="two columns">
-    <div class="panel callout radius">
-      <img src="img/arr1.png"/><br>
-      <h5 id="actual">Факт <br> </h5>
-      <br>
-    </div>
- </div>
-
-<div class="eight columns"><br><br><br><br>
-<table cellpadding="0" cellspacing="0" border="0" class="display mobile_dt1 dt_act" id="dt3" height=40>
-                                <tbody>
-                                    <tr >                        
-					<td rowspan="2" style="background-color:gray;color:white"><b>Прогнозная дата окончания Программы</td>
-                                        <td id="est_end_date" rowspan="2" style="background-color:gray;color:white">17.11.2015</td>
-			            </tr> 
-
-            <tr >                        
-			            </tr> 
-			
-				</tbody>
-</table>
-</div>
-
-<div class="two columns">
-    <div class="panel callout radius">
-      <br><br>
-      <h5 id="planned">План <br> </h5>
-      <br>
-    </div>
- </div>
-</div>
-
- <a href="2.html" style="color: inherit"><table cellpadding="0" cellspacing="0" border="0" class="display mobile_dt1 dt_act" id="dt1" alt="text">
-                                <tbody>
-                                    <tr >
-                                    </tr>
-				    <tr>
-                                        <td><b>Сроки</td>
-                                        <td id="timelimits_alert" style="background-color:white" align="center"></td>
-					<td id="timelimits_text" style="background-color:white">Отсутствуют базовые показатели, т.к. базовый план не утвержден</td>
-                                    </tr>
-				    <tr></tr>
-                                    <tr>
-                                        <td><b>Стоимость</td>
-                                        <td id="cost_alert" style="background-color:white" align="center"></td>
-					<td id="cost_text" style="background-color:white">Отсутствуют базовые показатели, т.к. базовый план не утвержден</td>
-                                    </tr>
-				    <tr></tr>
-				    <tr>
-                                        <td><b>Риски</td>
-                                        <td id="risks_alert" style="background-color:#FFFFFF" align="center"></td>
-					<td id="risks_text" style="background-color:white"></td>
-                                    </tr>				
-                                 
-                                </tbody>
-                            </table></a>		
-						</div>
-
-
-			</div>
-				</div>
-
-
-				
+					</div>
 				</div>
 			</div>
 		</div>
 
-		<footer class="container" id="footer"><center><img src="img/plank.png" width=60 /></center>
-		<div class="row">
-                    Copyright © ЗАО «ПМ Эксперт»
-			</div>
-		</footer>
 
+		<script src="js/jquery.min.js"></script>
+		<script src="js/s_scripts.js"></script>
+		<script src="lib/validate/jquery.validate.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				$(".sl_link").click(function(event){
+					$('.l_pane').slideToggle('normal').toggleClass('dn');
+					$('.sl_link,.lb_ribbon').children('span').toggle();
+					event.preventDefault();
+				});
 
+				$("#l_form").validate({
+					highlight: function(element) {
+						$(element).closest('.elVal').addClass("form-field error");
+					},
+					unhighlight: function(element) {
+						$(element).closest('.elVal').removeClass("form-field error");
+					},
+					rules: {
+						username: "required",
+						password: "required"
+					},
+					messages: {
+						username: "Please enter your username (type anything)",
+						password: "Please enter a password (type anything)"
+					},
+					errorPlacement: function(error, element) {
+						error.appendTo( element.closest(".elVal") );
+					}
+				});
 
-<div id="myModal" class="reveal-modal large">
-  <h6>Сроки (комментарий)</h6><br>
-  <p class="lead">Максимальное отставание по ключевым контрольным точкам соответствует Z месяцев.</p>
-  <a class="close-reveal-modal">Закрыть</a>
-</div>
-<div id="myModal2" class="reveal-modal large">
-  <h6>Стоимость (комментарий)</h6><br>
-  <p class="lead">Опережение\отставание соответствует Z месяцев.</p>
-  <a class="close-reveal-modal">Закрыть</a>
-</div>
-<div id="myModal3" class="reveal-modal large">
-  <h6>Риски (комментарий)</h6><br>
-  <p class="lead">Количество красных\желтых рисков Z.</p>
-  <a class="close-reveal-modal">Закрыть</a>
-</div>
-
-
-
-
-
-
-
-
-<script>				
-$(document).swipe({
-swipeLeft: function () {
-window.location = "2.html";
-		}
-});									
-</script>
-
+				$("#rp_form").validate({
+					highlight: function(element) {
+						$(element).closest('.elVal').addClass("form-field error");
+					},
+					unhighlight: function(element) {
+						$(element).closest('.elVal').removeClass("form-field error");
+					},
+					rules: {
+						upname: {
+							required: true,
+							email: true
+						}
+					},
+					messages: {
+						upname: "Please enter a valid email address"
+					},
+					errorPlacement: function(error, element) {
+						error.appendTo( element.closest(".elVal") );
+					}
+				});
+			});
+		</script>
 	</body>
 </html>

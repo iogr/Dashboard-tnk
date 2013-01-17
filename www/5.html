@@ -85,7 +85,7 @@
 <a class="button white tiny radius nice" href="2.html"><font color="#7e2a38">2</font></a>&nbsp;
 <a class="button white tiny radius nice" href="3.html"><font color="#7e2a38">3</font></a>&nbsp;
 <a class="button white tiny radius nice" href="4.html"><font color="#7e2a38">4</font></a>&nbsp;
-<a class="button black tiny radius " href="5.html">5</font></a>&nbsp;<br><br>	
+<a class="button black tiny radius " href="5.html">5 страница</font></a>&nbsp;<br><br>	
 
 <!-- Место под таблицу -->
 	
@@ -202,7 +202,7 @@
 
 </div></div>
 
-<br><br><br><br></div>	
+<br><br><br><br></div><img id="previous" src="img/arr_left.png" style="display:none;position:absolute;z-index:7;top:450px;left:-5%;height:150px;opacity:0.2;">	
 <center><div id="plank"><img src="img/plank.png" alt="Pertho Admin" width=60/></div></center>
 		<footer class="container" id="footer">
 			<div class="row">
@@ -212,6 +212,15 @@
 			</div>
 		</footer>
 
+<script>				
+$(document).swipe({
+
+swipeRight: function () {
+window.location = "4.html";
+$(previous).show();
+		}
+});
+</script>		
 		
 		
 

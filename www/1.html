@@ -55,29 +55,42 @@
 	<![endif]-->
 
 	</head>
-	<body class="ptrn_a grdnt_a mhover_a">
+	<body class="ptrn_a grdnt_a mhover_a" height=100%>
 <div class="meny" style="
+	
 	background-color: #222;
 	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGklEQVQIW2NkYGD4D8SMQAwGcAY2AbBKDBUAVuYCBQPd34sAAAAASUVORK5CYII=);
 	background-repeat: repeat;
-
+	
 	font-color:gray;
 	font-size: 17px;
-	color: #e1e1e1;"><br><div style="padding-left:8px">
-			<h4 style="color:white">&nbsp;Оглавление</h4>
+	color: #e1e1e1;"><div style="padding-left:8px;">
+			<br><h4 style="color:white">&nbsp;Оглавление</h4>
 			<br>
 				<li type="1" style="padding-bottom: 10px"><a style="color: inherit;" href="1.html">Общие сведения о Программе</a></li>
 				<li  type="1" style="padding-bottom: 10px"><a style="color: inherit;" href="1.html">Ход выполнения программы</a></li>
 				<li  type="1"  style="padding-bottom: 10px"><a style="color: inherit;"  href="2.html">Основные показатели хода реализации Программы</a></li>
 				<li  type="1" style="padding-bottom: 10px"><a style="color: inherit;"  href="3.html">Показатели соблюдения графика и освоенного объема</a></li>
-				<li  type="1"  style="padding-bottom: 10px"><a style="color: inherit;"  href="4.html">Проведение работ по проектам Программы (1 очередь)</a></li>
+				<li  type="1"  style="padding-bottom: 10px"><a style="color: inherit;"  href="4.html">Проведение работ по проектам Программы</a></li>
 				<li type="1"  style="padding-bottom: 10px"><a style="color: inherit;"  href="4.html">Критичные риски программы</a></li>
 				<li  type="1" style="padding-bottom: 10px"><a style="color: inherit;"  href="4.html">Реестр запросов на изменение</a></li>
 				<li  type="1"  style="padding-bottom: 10px"><a style="color: inherit;"  href="5.html">Контрольные точки Программы</a></li>
 			</ul>
 				</div>
 
-		</div><div class="contents"> 
+		</div><div class="contents" style="	
+	width: 100%;
+	height: device-height;
+	margin: 0;
+	overflow:hidden;
+	overflow-y: hidden;
+
+	-webkit-overflow-scrolling: touch;
+
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+"> 
 	<header>
 			<div class="container head_s_a">
 				<div class="row sepH_b">
@@ -100,7 +113,7 @@
 	</header>
 		<div class="container">	
 			<div class="row">	
-	&nbsp;&nbsp;&nbsp;&nbsp;<a class="button black tiny radius" href="#">1</a>&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;<a class="button black tiny radius" href="#">1 страница</a>&nbsp;
 <a class="button white tiny radius nice" href="2.html"><font color="#7e2a38">2</font></a>&nbsp;
 <a class="button white tiny radius nice" href="3.html"><font color="#7e2a38">3</font></a>&nbsp;
 <a class="button white tiny radius nice" href="4.html"><font color="#7e2a38">4</font></a>&nbsp;
@@ -219,11 +232,11 @@
 			</div>
 		
 
-		<footer class="container"><center><img src="img/plank.png" width=60 /></center>
+		<footer class="container"><center><img src="img/plank.png" width=60/></center>
 		<div class="row" id="footer">
                     Copyright © ЗАО «ПМ Эксперт»
 			</div>
-		</footer></div>		
+		</footer>		
 
 
 
@@ -244,6 +257,9 @@
 </div>
 
 
+<img id="next" src="img/arr_right.png" style="display:none;position:absolute;z-index:7;top:450px;right:-5%;height:150px;opacity:0.2;">
+
+</div>
 
 
 
@@ -254,7 +270,9 @@
 $(document).swipe({
 swipeLeft: function () {
 window.location = "2.html";
-		}
+$(next).show();
+		},
+threshold:200
 });									
 </script>
 
@@ -271,7 +289,6 @@ window.location = "2.html";
 
 				// [optional] The alignment of the menu (top/right/bottom/left)
 				position: Meny.getQuery().p || 'left',
-
 				// [optional] The height of the menu (when using top/bottom position)
 				height: 200,
 
@@ -286,11 +303,11 @@ window.location = "2.html";
 			// meny.open();
 			// meny.close();
 			// meny.isOpen();
-			
+
 			// Events:
 			// meny.addEventListener( 'open', function(){ console.log( 'open' ); } );
 			// meny.addEventListener( 'close', function(){ console.log( 'close' ); } );
-
+			
 			// Embed an iframe if a URL is passed in
 			if( Meny.getQuery().u && Meny.getQuery().u.match( /^http/gi ) ) {
 				var contents = document.querySelector( '.contents' );

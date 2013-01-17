@@ -153,11 +153,13 @@ var setDataToDom = function(data) {
 $(document).swipe({
 swipeLeft: function () {
 window.location = "5.html";
+$(next).show();
     },
 
 swipeRight: function () {
 window.location = "3.html";
-    }
+$(previous).show(); 
+   }
 });
 
 $(document).ready(function() {

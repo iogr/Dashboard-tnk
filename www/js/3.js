@@ -36,7 +36,8 @@
         chart = new Highcharts.Chart({
             chart: {
                 renderTo: 'chart',
-                type: 'bar'
+                type: 'bar',	
+		
             },
             title: {
                 text: ''
@@ -52,20 +53,31 @@
                 title: {
                     text: 'Значение',
                     align: 'high'
-                },
-                labels: {
-                    enabled: 'justify'
                 }
+
             },
             tooltip: {
-                formatter: function() {
-                    return '$ '+
-                        this.y;
-                }
+            valueDecimals: 1,
+            valuePrefix: '$',
+            valueSuffix: ' USD'
             },
             plotOptions: {
+		series: {
+		
+		},
                 bar: {
-                    dataLabels: {
+			crop: true,
+			dataLabels: {
+			style: {
+                        fontWeight:'bold',
+			fontSize:15,
+                    },
+			valueDecimals: 1,
+			crop: false,
+			x:-150,
+			y:-17,	
+			
+			zIndex:50,
                         enabled: true
                     }
                 }

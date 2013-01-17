@@ -6,6 +6,7 @@
 var __data__ = null;
 
 var getData = function() {
+$.ajaxSetup({ cache: true });
     if (__data__ != null) {
         return __data__;
     } else {
@@ -14,6 +15,7 @@ var getData = function() {
             __data__ = data;
             setDataToDom(data);
             return data;
+	$.ajaxSetup({ cache: true });
         });
     }
 };
@@ -259,7 +261,7 @@ innerRadius: '67%'
 var plan_fact_gauge;
 
 $(document).ready(function() {
-    
+    $.ajaxSetup({ cache: true });
 
     getData();
 });

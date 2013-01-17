@@ -53,7 +53,7 @@ var getData = function() {
         // ac.setTime(Date.parse(act['actual']));
         if (maxdate < ac) {maxdate = ac};
         if (mindate > ac) {mindate = ac};
-        events.push({dates: [ac], title: '\u0424\u0430\u043A\u0442\u003A\u0020'+ act['name'], section: 0});
+        events.push({dates: [ac], title: '\u0424\u0430\u043A\u0442\u003A\u0020'+ act['name'], section: 0, description: '\u0412\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u043E\u003A\u0020'+$.datepicker.formatDate('dd.mm.yy', pl)});
       };
 
       if (pl < report_date) {
@@ -69,12 +69,12 @@ var getData = function() {
       };
 
 
-      events.push({dates: [pl], title: '\u041F\u043B\u0430\u043D\u003A\u0020'+act['name'], section: 2, description: pl});
+      events.push({dates: [pl], title: '\u041F\u043B\u0430\u043D\u003A\u0020'+act['name'], section: 2, description: '\u0417\u0430\u043F\u043B\u0430\u043D\u0438\u0440\u043E\u0432\u0430\u043D\u043E\u0020\u043D\u0430\u003A\u0020'+$.datepicker.formatDate('dd.mm.yy', ac)});
       
     });
 
- var sections = [{dates: [mindate, maxdate], title: "Fact", section:0, attrs: {fill: "#d4e3fd"}},
-		{dates: [mindate, maxdate], title: "Plan", section: 2, attrs: {fill: "#d4e3fd"}}];
+ var sections = [{dates: [mindate, maxdate], title: "\u0424\u0430\u043A\u0442", section:0, attrs: {fill: "#d4e3fd"}},
+		{dates: [mindate, maxdate], title: "\u041F\u043B\u0430\u043D", section: 2, attrs: {fill: "#d4e3fd"}}];
 
 
     var timeline = new Chronoline(document.getElementById("timeline"), events, {
@@ -84,12 +84,18 @@ var getData = function() {
       dateLabelHeight: 50,
       animated: true,
       tooltips: true, 
+      eventAttrs: {  // attrs for the bars and circles of the events
+            fill: '#0055e1',
+            stroke: '#000000',
+            "stroke-width": 3	
+        },
+
       defaultStartDate: mindate,
       labelInterval: isHalfMonth,
       hashInterval: isHalfMonth,
       scrollLeft: prevQuarter,
       scrollRight: nextQuarter,
-      floatingSubLabels: false,
+      floatingSubLabels: true,
       // sections: [{dates: [new Date(2011, 2, 31), new Date(2013, 9, 28)], title: "2011 MLB Season", section: 0, attrs: {fill: "#d4e3fd"}}],
       sections: sections,
 	
@@ -101,27 +107,6 @@ var getData = function() {
     // alert('succ');
   };
 
-
-
-jQuery.fn.synchronizeScroll = function() {
-
-      var elements = this;
-            if (elements.length <= 1) return;
- 
-        elements.scroll(
-         function() {
-              var left = $(this).scrollLeft();
-              var top = $(this).scrollTop();
-              elements.each(
-               function() {
-                  if ($(this).scrollLeft() != left) $(this).scrollLeft(left);
-                  if ($(this).scrollTop() != top) $(this).scrollTop(top);
-               }
-              );
-          });
-       }
-
-$(".scrollDiv").synchronizeScroll();
 
 $(document).ready(function() {
   getData();

@@ -170,10 +170,12 @@ var setDataToDom = function(data) {
 $(document).swipe({
 swipeLeft: function () {
 window.location = "3.html";
+$(next).show();
         },
 
 swipeRight: function () {
 window.location = "1.html";
+$(previous).show();
         }
 });
 
