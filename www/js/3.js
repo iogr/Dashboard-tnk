@@ -14,6 +14,23 @@
         }
     };
 
+
+function formatDollar(num) {
+    var p = num.toFixed(2).split(".");
+    var chars = p[0].split("").reverse();
+    var newstr = '';
+    var count = 0;
+    for (x in chars) {
+        count++;
+        if(count%3 == 1 && count != 1) {
+            newstr = chars[x] + ',' + newstr;
+        } else {
+            newstr = chars[x] + newstr;
+        }
+    }
+    return newstr;
+}
+
     var setDataToDom = function(data) {
         $('#ev').html(data['ev']);
         $('#ac').html(data['ac']);
@@ -51,23 +68,30 @@
             yAxis: {
                 min: 0,
                 title: {
-                    text: 'Значение',
+                    text: '\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435\u0020\u0028\u043E\u0431\u044A\u0435\u043C\u0029',
                     align: 'high'
                 }
 
             },
             tooltip: {
+	    shared: true,
             valueDecimals: 1,
             valuePrefix: '$',
             valueSuffix: ' USD'
             },
             plotOptions: {
-		series: {
 		
+		series: {
+		stickyTracking: false
+
 		},
                 bar: {
+			
 			crop: true,
 			dataLabels: {
+			formatter:  function() {
+	return '$'+ formatDollar(this.y);
+			},
 			style: {
                         fontWeight:'bold',
 			fontSize:15,
@@ -75,15 +99,16 @@
 			valueDecimals: 1,
 			crop: false,
 			x:-150,
-			y:-17,	
+			y:-22,	
 			
 			zIndex:50,
                         enabled: true
                     }
                 }
             },
+	    legend: {enabled: false},
             credits: {
-                enabled: false
+                enabled: true
             },
             series: [{
               name: 'значение показателя',
