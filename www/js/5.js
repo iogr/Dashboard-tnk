@@ -25,6 +25,7 @@ var getData = function() {
     // };
 
     var events = []
+    var events2= []
       // {dates: [new Date(2011, 2, 31)], title: "2011 Season Opener", section: 0},
       // {dates: [new Date(2012, 1, 29)], title: "Spring Training Begins", section: 0},
       // {dates: [new Date(2012, 3, 5)], title: "Atlanta Braves @ New York Mets Game 1", section: 0},
@@ -53,7 +54,7 @@ var getData = function() {
         // ac.setTime(Date.parse(act['actual']));
         if (maxdate < ac) {maxdate = ac};
         if (mindate > ac) {mindate = ac};
-        events.push({dates: [ac], title: '\u0424\u0430\u043A\u0442\u003A\u0020'+ act['name'], section: 0, description: '\u0412\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u043E\u003A\u0020'+$.datepicker.formatDate('dd.mm.yy', pl)});
+        events.push({dates: [ac], title: '\u0424\u0430\u043A\u0442\u003A\u0020'+ act['name'], section: 0, description: '\u0412\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u043E\u003A\u0020'+$.datepicker.formatDate('dd.mm.yy', ac)});
       };
 
       if (pl < report_date) {
@@ -69,12 +70,12 @@ var getData = function() {
       };
 
 
-      events.push({dates: [pl], title: '\u041F\u043B\u0430\u043D\u003A\u0020'+act['name'], section: 2, description: '\u0417\u0430\u043F\u043B\u0430\u043D\u0438\u0440\u043E\u0432\u0430\u043D\u043E\u0020\u043D\u0430\u003A\u0020'+$.datepicker.formatDate('dd.mm.yy', ac)});
+      events.push({dates: [pl], title: '\u041F\u043B\u0430\u043D\u003A\u0020'+act['name'], section: 2, description: '\u0417\u0430\u043F\u043B\u0430\u043D\u0438\u0440\u043E\u0432\u0430\u043D\u043E\u0020\u043D\u0430\u003A\u0020'+$.datepicker.formatDate('dd.mm.yy', pl)});
       
     });
 
  var sections = [{dates: [mindate, maxdate], title: "\u0424\u0430\u043A\u0442", section:0, attrs: {fill: "#d4e3fd"}},
-		{dates: [mindate, maxdate], title: "\u041F\u043B\u0430\u043D", section: 2, attrs: {fill: "#d4e3fd"}}];
+		{dates: [mindate, maxdate], title: "\u041F\u043B\u0430\u043D", section: 2, attrs: {fill: "#f5f5f5"}}];
 
 
     var timeline = new Chronoline(document.getElementById("timeline"), events, {

@@ -49,7 +49,7 @@ var setDataToDom = function(data) {
         $('#risks_alert').html('<img src="img/green.png"  height="22px" width="22px">');
     };
 
-    $('#timelimits_text').html(data['timelimits_text']);
+    $('#timelimits_text').html('<a href="5.html" style="color: inherit">'+data['timelimits_text']+'</a>');
     $('#myModal').html(data['timelimits_text']);
     if (data['timelimits_alert'] == "yellow") {
         $('#timelimits_alert').html('<a href="#" data-reveal-id="myModal"><img src="img/yellow.png"  height="22px" width="22px"></a>');
@@ -59,7 +59,7 @@ var setDataToDom = function(data) {
         $('#timelimits_alert').html('<img src="img/green.png"  height="22px" width="22px">');
     };
 
-    $('#cost_text').html(data['cost_text']);
+    $('#cost_text').html('<a href="3.html" style="color: inherit">'+data['cost_text']+'</a>');
     $('#myModal2').html(data['cost_text']);
     if (data['cost_alert'] == "yellow") {
         $('#cost_alert').html('<a href="#" data-reveal-id="myModal3"><img src="img/yellow.png" height="22px" width="22px"></a>');

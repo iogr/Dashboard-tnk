@@ -86,15 +86,15 @@ var setDataToDom = function(data) {
     
     tooltip: {
       shared: true
-        
     },
     
     legend: {
         align: 'right',
         verticalAlign: 'top',
-  x:-100,
+  	floating: true,
+	x:-40,
         y: 20,
-  borderColor: '#FFFFFF',
+  	borderColor: '#FFFFFF',
         layout: 'vertical'
     },
     
@@ -159,7 +159,8 @@ $(next).show();
 swipeRight: function () {
 window.location = "3.html";
 $(previous).show(); 
-   }
+   },
+fingers:1,
 });
 
 $(document).ready(function() {

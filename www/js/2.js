@@ -176,7 +176,8 @@ $(next).show();
 swipeRight: function () {
 window.location = "1.html";
 $(previous).show();
-        }
+        },
+fingers:1,
 });
 
 var chart;

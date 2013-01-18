@@ -59,7 +59,7 @@
 	</head>
 	<body class="ptrn_a grdnt_a mhover_a">
 
-	<header>
+	<header id="forscroll3">
 			<div class="container head_s_a">
 				<div class="row sepH_b">
 					<div class="six columns">
@@ -79,7 +79,7 @@
 	
 
 	</header>
-		<div class="container">	
+		<div class="container" style="z-index:7">	
 			<div class="row">	
 	&nbsp;&nbsp;&nbsp;&nbsp;<a class="button white tiny radius nice" href="1.html"	><font color="#7e2a38">1</a>&nbsp;
 <a class="button white tiny radius nice" href="2.html"><font color="#7e2a38">2</font></a>&nbsp;
@@ -90,7 +90,7 @@
 <!-- Место под таблицу -->
 	
 
-<div class="twelve columns centered">
+<div class="twelve columns centered" id="forscroll2">
 	<div class="box_c_heading cf">
 							<p><center>Контрольные точки Программы	</center></p>
  	</div>
@@ -165,7 +165,7 @@
 
 <!-- Добавил -->
 
-<div class="twelve columns centered">
+<div class="twelve columns centered" id="forscroll">
 <!-- Добавил -->
 
  <table cellpadding="0" cellspacing="0" border="0" class="display mobile_dt2 dt_act">
@@ -211,25 +211,49 @@
 				</div>
 			</div>
 		</footer>
-<!--
+
 <script>				
 
 $(document).ready( function (){
 
-$("div").swipe({
+$("#forscroll").swipe({
 
 swipeRight: function () {
 window.location = "4.html";
 $(previous).show();
 		},
-threshold:500
+fingers:1
 });
+
+
+$("#forscroll2").swipe({
+
+swipeRight: function () {
+window.location = "4.html";
+$(previous).show();
+		},
+fingers:1
+
+});
+
+
+$("#forscroll3").swipe({
+
+swipeRight: function () {
+window.location = "4.html";
+$(previous).show();
+		},
+fingers:1
+
+});
+
+
 
 })
 
 </script>		
 		
--->		
+
 
 	</body>
 </html>

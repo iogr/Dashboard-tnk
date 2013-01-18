@@ -33,14 +33,14 @@ function formatDollar(num) {
 
 
     var setDataToDom = function(data) {
-        $('#ev').html(data['ev']);
-        $('#ac').html(data['ac']);
-        $('#pv').html(data['pv']);
+        $('#ev').html(Math.floor(parseFloat(data['ev'])));
+        $('#ac').html(Math.floor(parseFloat(data['ac'])));
+        $('#pv').html(Math.floor(parseFloat(data['pv'])));
         $('#spi').html(data['spi']);
-        $('#sv').html(data['sv']);
+        $('#sv').html(Math.floor(parseFloat(data['sv'])));
         $('#cpi').html(data['cpi']);
-        $('#cv').html(data['cv']);
-        $('#vac').html(data['vac']);
+        $('#cv').html(Math.floor(parseFloat(data['cv'])));
+        $('#vac').html(Math.floor(parseFloat(data['vac'])));
 
         chart.series[0].points[0].update(parseFloat(data['ev']));
         chart.series[0].points[1].update(parseFloat(data['ac']));
