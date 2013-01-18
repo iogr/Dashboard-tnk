@@ -79,6 +79,7 @@ var getData = function() {
 
     var timeline = new Chronoline(document.getElementById("timeline"), events, {
       visibleSpan: DAY_IN_MILLISECONDS * 366,
+      scrollable: true,
       eventHeight: 20,
       eventMargin: 10,
       dateLabelHeight: 50,
@@ -101,7 +102,8 @@ var getData = function() {
 	
       sectionLabelAttrs: {'fill': '#997e3d', 'font-weight': 'bold'},
       markToday: 'labelBox',
-      draggable: true
+      draggable: true,
+      continuousScroll: true
       });
 
     // alert('succ');

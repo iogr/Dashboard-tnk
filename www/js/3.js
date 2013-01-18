@@ -31,6 +31,7 @@ function formatDollar(num) {
     return newstr;
 }
 
+
     var setDataToDom = function(data) {
         $('#ev').html(data['ev']);
         $('#ac').html(data['ac']);
@@ -44,6 +45,30 @@ function formatDollar(num) {
         chart.series[0].points[0].update(parseFloat(data['ev']));
         chart.series[0].points[1].update(parseFloat(data['ac']));
         chart.series[0].points[2].update(parseFloat(data['pv']));
+
+if (parseFloat(data['ev']) > parseFloat(data['ac'])) {
+
+$('#res1').html('\u042D\u043A\u043E\u043D\u043E\u043C\u0438\u044F\u0020\u043F\u043E\u0020\u0431\u044E\u0434\u0436\u0435\u0442\u0443')
+
+} else { 
+
+$('#res1').html('\u041F\u0435\u0440\u0435\u0440\u0430\u0441\u0445\u043E\u0434\u0020\u043F\u043E\u0020\u0431\u044E\u0434\u0436\u0435\u0442\u0443');
+
+       };
+
+
+if (parseFloat(data['ev']) > parseFloat(data['pv'])) {
+
+$('#res2').html('\u041E\u043F\u0435\u0440\u0435\u0436\u0435\u043D\u0438\u0435\u0020\u043F\u043E\u0020\u0433\u0440\u0430\u0444\u0438\u043A\u0443')
+
+} else { 
+
+$('#res2').html('\u041E\u0442\u0441\u0442\u0430\u0432\u0430\u043D\u0438\u0435\u0020\u043E\u0442\u0020\u0433\u0440\u0430\u0444\u0438\u043A\u0430');
+
+       };
+
+
+
 
     };
 
@@ -116,6 +141,8 @@ function formatDollar(num) {
             }]
         });
         getData();
+
+
     });
     
 // });

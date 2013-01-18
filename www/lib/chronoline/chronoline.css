@@ -8,7 +8,7 @@
    user-select: none;
 }
 .chronoline-canvas {
-    overflow: hidden;
+    overflow: scroll;
     position: relative;
     width: 100%;
 }

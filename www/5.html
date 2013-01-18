@@ -98,7 +98,7 @@
 </div>
 
 <div style="width:15%" class="display mobile_dt2 dt_act"></div><div  class="twelve columns centered">
-<div id="timeline" style="overflow:hidden;height:350px; margin: 0 auto;"></div></div><!-- 
+<div id="timeline" style="z-index:100;overflow:hidden;height:330px; margin: 0 auto;"></div></div><!-- 
 <table cellpadding="0" cellspacing="0" border="0" class="display mobile_dt2 dt_act">
                                 <tbody>
                                     <tr style="height:50px">
@@ -211,18 +211,25 @@
 				</div>
 			</div>
 		</footer>
-
+<!--
 <script>				
-$(document).swipe({
+
+$(document).ready( function (){
+
+$("div").swipe({
 
 swipeRight: function () {
 window.location = "4.html";
 $(previous).show();
-		}
+		},
+threshold:500
 });
+
+})
+
 </script>		
 		
-		
+-->		
 
 	</body>
 </html>
