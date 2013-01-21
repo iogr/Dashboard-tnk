@@ -30,10 +30,13 @@
 							<div class="row m_cont " >
 								<div class="five columns centered" >
 									<div class="l_pane" >
+										<div id="user_name" class="sepH_b" style="display:none">Имя Фамилия</div>
+
 										<form action="dashboard.html" method="post" class="nice" id="l_form">
 											<div class="sepH_c">
 
 												<div class="elVal">
+													
 													<input style="width:300px;height:40px;margin-top:30px;margin-left:-70px" type="password" id="password" name="password" class="oversize normal input-text" value="admin" />
 												</div>
 											</div>
@@ -74,6 +77,13 @@
 					$('.l_pane').slideToggle('normal').toggleClass('dn');
 					$('.sl_link,.lb_ribbon').children('span').toggle();
 					event.preventDefault();
+				});
+
+				$.ajax({
+				  url: 'http://94.127.69.63:8080/data/login',
+				  // url: 'data/login',
+				}).done(function ( data ) {
+				  $('#user_name').html(data['user_name']);
 				});
 
 				$("#l_form").validate({

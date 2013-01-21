@@ -7,6 +7,8 @@ set :public_folder, File.dirname(__FILE__) + '/www'
 
 set :eps_id, 17730
 
+set :user_name, 'Александр Корейко'
+
 set :risk_red_score, 50
 set :risk_yellow_score, 10
 
@@ -27,6 +29,21 @@ db_client = TinyTds::Client.new(
 before /.*/ do
   content_type :json, 'charset' => 'utf-8' 
   headers("Access-Control-Allow-Origin" => "*")
+end
+
+def pluralize(quantity, endings)
+  case quantity
+    when 1 
+      endings[0]
+    when 2..4 
+      endings[1]
+    else
+      endings[2]
+    end
+end
+
+get '/data/login' do
+  {'user_name' => options.user_name}.to_json
 end
 
 get '/data/index' do
@@ -70,10 +87,10 @@ get '/data/index' do
   red_count = risks.count{|x| x >= options.risk_red_score}
   yellow_count = risks.count{|x| x >= options.risk_yellow_score}
   if red_count == 0
-    result['risks_text'] = "Количество красных рисков: #{red_count}"
+    result['risks_text'] = "Количество красных рисков: #{red_count}."
     result['risks_alert'] = "red"
   elsif not yellow_count == 0
-    result['risks_text'] = "Количество жёлтых рисков: #{yellow_count}"
+    result['risks_text'] = "Количество жёлтых рисков: #{yellow_count}."
     result['risks_alert'] = "yellow"
   else
     result['risks_text'] = ""
@@ -90,9 +107,9 @@ get '/data/index' do
   end
 
   if (cost < 0)
-    result['cost_text'] = "Отставание по графику составляет #{cost.abs} руб."
+    result['cost_text'] = "Отставание по графику составляет #{cost.abs.to_i / 1000} тыс. руб."
   else
-    result['cost_text'] = "Опережение по графику составляет #{cost} руб."
+    result['cost_text'] = "Опережение по графику составляет #{cost.to_i / 1000} тыс. руб."
   end
 
   query_result = db_client.execute("SELECT max(datediff(mm, a.BaselineStartDate, a.ActualStartDate)) as spread
@@ -101,7 +118,7 @@ get '/data/index' do
                                     WHERE p.parentepsobjectid = #{options.eps_id};")
 
   timespread = query_result.first['spread'].to_i
-  result['timelimits_text'] = "Максимальное отставание по ключевым КТ соответвствует #{timespread} месяцев."
+  result['timelimits_text'] = "Максимальное отставание по ключевым КТ соответвствует #{timespread} #{pluralize(timespread, ['месяц', 'месяца', 'месяцев'])}."
   result['timelimits_alert'] = "yellow"
   query_result.do
   
@@ -143,7 +160,7 @@ get '/data/2' do
       result[row['value_name']] << value
       categories << date
     end
-    result['categories'] = categories unless result['categories']
+    result['categories'] = categories if not result['categories'] or result['categories'].size < categories.size
   end
 
   # result['categories'].sort!

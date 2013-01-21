@@ -24,7 +24,9 @@ var strArrayToFloatArray = function(arr){
 
 var monthArrayToTextArray = function(arr){
     for (index in arr) {
-        var month = months[parseInt(arr[index].slice(0,2)) - 1];
+        monthNumber = arr[index].slice(0,2);
+        if (monthNumber[0] == "0") {monthNumber = monthNumber.slice(1,2);};
+        var month = months[parseInt(monthNumber) - 1];
         var year = arr[index].slice(2,6);
         arr[index] = month + ' ' + year;
     };
