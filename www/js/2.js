@@ -26,8 +26,8 @@ var monthArrayToTextArray = function(arr){
     for (index in arr) {
         monthNumber = arr[index].slice(0,2);
         if (monthNumber[0] == "0") {monthNumber = monthNumber.slice(1,2);};
-        var month = months[parseInt(monthNumber) - 1];
-        var year = arr[index].slice(2,6);
+        month = months[parseInt(monthNumber) - 1];
+        year = arr[index].slice(2,6);
         arr[index] = month + ' ' + year;
     };
 };
