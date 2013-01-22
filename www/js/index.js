@@ -39,7 +39,7 @@ var setDataToDom = function(data) {
     // $('#timelimits_text').html(data['timelimits_text']);
     // $('#cost').html(data['cost']);
     
-    $('#risks_text').html(data['risks_text']);
+    $('#risks_text').html('<a href="4.html" style="color: inherit">'+data['risks_text']+'</a>');
     $('#myModal3').html(data['risks_text' ]+ '<a class="close-reveal-modal">Закрыть</a>');
     if (data['risks_alert'] == "yellow") {
         $('#risks_alert').html('<a href="#" data-reveal-id="myModal3"><img src="img/yellow.png" height="22px" width="22px"></a>');

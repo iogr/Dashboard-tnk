@@ -146,19 +146,19 @@
 <table cellpadding="0" cellspacing="0" border="0" class="display mobile_dt2 dt_act">
                                 <tbody align="center">
                                     <tr >
-                                        <td colspan="2" style="background-color:#B0BED9"><b>Анализ показателей Программы</td>
+                                        <td colspan="3" style="background-color:#B0BED9"><b>Анализ показателей Программы</td>
                                     
                                     </tr><tr></tr>
 			            <tr>
                                         <td width=33%>Стоимостной анализ</td>
                                         <td id="res1">Экономия по бюджету</td>
-                                        
+                                        <td width=10% id="res1b"></td>
 					
 				    </tr>
 			            <tr >
                                         <td width=33% style="background-color:white">Анализ графика работ</td>
                                         <td id="res2" style="background-color:white">Опережение по графику</td>
-					
+					<td width=10% id="res2b" style="background-color:white"></td>
 				    </tr>
                                 </tbody>
                             </table>
@@ -189,23 +189,23 @@
 	display:block;
  }</style><HV>Стоимость</HV></td> 
 					<td style="background-color:white">CV>0 & CPI>1</td>
-                                        <td style="color:black;background-color:#cedbec">Опережение по графику и экономия по бюджету</td>
-                                        <td style="color:white;background-color:#8ab5e0">Соблюдение графика и экономия по бюджету</td>
-					<td style="color:white;background-color:#be425c">Отставание по графику и экономия по бюджету</td>
+                                        <td id="t11" style="color:black;background-color:#cedbec;opacity:0.3">Опережение по графику и экономия по бюджету</td>
+                                        <td id="t12" style="color:white;background-color:#8ab5e0;opacity:0.3">Соблюдение графика и экономия по бюджету</td>
+					<td id="t13" style="color:white;background-color:#be425c;opacity:0.3">Отставание по графику и экономия по бюджету</td>
 					
 				    </tr>
 			            <tr >
                                         <td id="ev" style="color:black;background-color:white">SV=0 & SPI=1</td>
-                                        <td id="ac" style="color:white;background-color:#8ab5e0">Опережение по график и соблюдение по бюджету</td>
-					<td id="pv" style="color:white;background-color:#906d85">Соблюдение графика и соблюдение бюджета</td>
-					<td id="pv" style="color:white;background-color:#a1321f">Соблюдение графика и перерасход по бюджету</td>
+                                        <td id="t21"  style="color:white;background-color:#8ab5e0;opacity:0.3">Опережение по график и соблюдение по бюджету</td>
+					<td id="t22"  style="color:white;background-color:#906d85;opacity:0.3">Соблюдение графика и соблюдение бюджета</td>
+					<td id="t23"  style="color:white;background-color:#a1321f;opacity:0.3">Соблюдение графика и перерасход по бюджету</td>
 					
 				    </tr>
 			            <tr >
-					<td id="pv" style="color:black;background-color:white">SV<0 & SPI<1</td>
-                                        <td id="ev" style="color:white;background-color:#be425c">Опережение по графику и перерасход по бюджету</td>
-                                        <td id="ac" style="color:white;background-color:#a1321f">Соблюдение графика и перерасход по бюджету</td>
-					<td id="pv" style="color:white;background-color:#ed1b24">Отставание по графику и перерасход по бюджету</td>
+					<td  style="color:black;background-color:white">SV<0 & SPI<1</td>
+                                        <td id="t31" style="color:white;background-color:#be425c;opacity:0.3">Опережение по графику и перерасход по бюджету</td>
+                                        <td id="t32" style="color:white;background-color:#a1321f;opacity:0.3">Соблюдение графика и перерасход по бюджету</td>
+					<td id="t33" style="color:white;background-color:#ed1b24;opacity:0.3">Отставание по графику и перерасход по бюджету</td>
 					
 				    </tr>
                                 </tbody>

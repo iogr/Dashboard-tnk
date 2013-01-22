@@ -32,8 +32,8 @@ var setDataToDom = function(data) {
 
   $.each(data['works'], function(i, work) {
     $('#works_table').append('<tr><td align="left">' + work['name'] + '</td>'
-                                +'<td>' + parseFloat(work['planned']) + '</td>'
-                                +'<td>' + parseFloat(work['actual']) + '</td></tr>');
+                                +'<td>' + parseFloat(work['planned']).toFixed(2) + '</td>'
+                                +'<td>' + parseFloat(work['actual']).toFixed(2) + '</td></tr>');
 
     work_categories.push(work['name']);
     planned_data.push(parseFloat(work['planned']));
@@ -41,14 +41,16 @@ var setDataToDom = function(data) {
   });
 
   $.each(data['risks'], function(i, risk) {
-    $('#risks_table').append('<tr><td align="left">' + risk['name'] + '</td>'
-                                +'<td>' + (risk['response'] == null ? "" : risk['response']) + '</td>'
+    $('#risks_table').append('<tr><td width=5%>1' + '</td>'
+				+ '<td align="left">' + risk['name'] + '</td>'
+                                +'<td >' + (risk['response'] == null ? "" : risk['response']) + '</td>'
                                 +'<td>' + (risk['responsible'] == null ? "" : risk['responsible']) + '</td></tr>');
   });
 
   $.each(data['documents'], function(i, doc) {
-    $('#documents_table').append('<tr><td align="left">' + doc['title'] + '</td>'
-                                +'<td>' + (doc['revision_date'] == null ? "" : doc['revision_date']) + '</td>'
+    $('#documents_table').append('<tr><td width=5%>1' + '</td>'
+				+ '<td align="left">' + doc['title'] + '</td>'
+                                +'<td>' + (doc['revision_date'] == null ? "" : doc['revision_date'].substring(0,10)) + '</td>'
                                 +'<td>' + (doc['status'] == null ? "" : doc['status']) + '</td></tr>');
   });
 
