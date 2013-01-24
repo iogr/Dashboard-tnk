@@ -87,35 +87,43 @@ get '/data/index' do
   red_count = risks.count{|x| x >= options.risk_red_score}
   yellow_count = risks.count{|x| x >= options.risk_yellow_score}
   if red_count == 0
-    result['risks_text'] = "Количество красных рисков: #{red_count}."
+    result['risks_text'] = "есть значителные риски"
+    # result['risks_text'] = "Количество красных рисков: #{red_count}."
     result['risks_alert'] = "red"
   elsif not yellow_count == 0
-    result['risks_text'] = "Количество жёлтых рисков: #{yellow_count}."
+    result['risks_text'] = "есть умеренные риски"
+    # result['risks_text'] = "Количество жёлтых рисков: #{yellow_count}."
     result['risks_alert'] = "yellow"
   else
-    result['risks_text'] = ""
+    result['risks_text'] = "все риски незначительные"
     result['risks_alert'] = "green"
   end
 
   cost = result['cost'].to_f
   if (cost < options.cost_red_score)
     result['cost_alert'] = "red"
+    result['cost_text'] = "отставание по срокам и перерасход бюджета"
   elsif (cost < options.cost_yellow_score)
     result['cost_alert'] = "yellow"
+    cost_trunc = (cost.abs.to_i / 1000).to_s + ' '
+    while (cost_trunc.sub!(/\d(\d{3})\s/) {|d| d.insert(1,' ')})
+    end
+    result['cost_text'] = "перерасход бюджета составляет #{cost_trunc.strip} тыс. руб."
   else
     result['cost_alert'] = "green"
+    result['cost_text'] = "сроки и бюджет соблюдены"
   end
 
-  cost_trunc = (cost.abs.to_i / 1000).to_s + ' '
+  # cost_trunc = (cost.abs.to_i / 1000).to_s + ' '
 
-  while (cost_trunc.sub!(/\d(\d{3})\s/) {|d| d.insert(1,' ')})
-  end
+  # while (cost_trunc.sub!(/\d(\d{3})\s/) {|d| d.insert(1,' ')})
+  # end
 
-  if (cost < 0)
-    result['cost_text'] = "Отставание по графику составляет #{cost_trunc.strip} тыс. руб."
-  else
-    result['cost_text'] = "Опережение по графику составляет #{cost_trunc.strip} тыс. руб."
-  end
+  # if (cost < 0)
+  #   result['cost_text'] = "Отставание по графику составляет #{cost_trunc.strip} тыс. руб."
+  # else
+  #   result['cost_text'] = "Опережение по графику составляет #{cost_trunc.strip} тыс. руб."
+  # end
 
   query_result = db_client.execute("SELECT max(datediff(mm, a.BaselineStartDate, a.ActualStartDate)) as spread
                                     FROM ACTIVITY as a JOIN PROJECT as p
@@ -129,10 +137,13 @@ get '/data/index' do
   
   if (timespread > options.timeline_red_score)
     result['timelimits_alert'] = "red"
+    result['timelimits_text'] = "отставание ключевой контрольной точки(чек) более 6 мес"
   elsif (timespread > options.timeline_yellow_score)
     result['timelimits_alert'] = "yellow"
+    result['timelimits_text'] = "отставание ключевой контрольной точки(чек) более 3 мес"
   else
     result['timelimits_alert'] = "green"
+    result['timelimits_text'] = "сроки соблюдены"
   end
 
   result['eps_exec_dir'] = "А. М. Слепцов"
