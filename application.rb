@@ -106,10 +106,15 @@ get '/data/index' do
     result['cost_alert'] = "green"
   end
 
+  cost_trunc = (cost.abs.to_i / 1000).to_s + ' '
+
+  while (cost_trunc.sub!(/\d(\d{3})\s/) {|d| d.insert(1,' ')})
+  end
+
   if (cost < 0)
-    result['cost_text'] = "Отставание по графику составляет #{cost.abs.to_i / 1000} тыс. руб."
+    result['cost_text'] = "Отставание по графику составляет #{cost_trunc.strip} тыс. руб."
   else
-    result['cost_text'] = "Опережение по графику составляет #{cost.to_i / 1000} тыс. руб."
+    result['cost_text'] = "Опережение по графику составляет #{cost_trunc.strip} тыс. руб."
   end
 
   query_result = db_client.execute("SELECT max(datediff(mm, a.BaselineStartDate, a.ActualStartDate)) as spread
