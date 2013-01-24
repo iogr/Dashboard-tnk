@@ -41,14 +41,14 @@ var setDataToDom = function(data) {
   });
 
   $.each(data['risks'], function(i, risk) {
-    $('#risks_table').append('<tr><td width=5%>1' + '</td>'
+    $('#risks_table').append('<tr><td width=5%>' + risk['id']+ '</td>'
 				+ '<td align="left">' + risk['name'] + '</td>'
                                 +'<td >' + (risk['response'] == null ? "" : risk['response']) + '</td>'
                                 +'<td>' + (risk['responsible'] == null ? "" : risk['responsible']) + '</td></tr>');
   });
 
   $.each(data['documents'], function(i, doc) {
-    $('#documents_table').append('<tr><td width=5%>1' + '</td>'
+    $('#documents_table').append('<tr><td width=5%>' + doc['id'] + '</td>'
 				+ '<td align="left">' + doc['title'] + '</td>'
                                 +'<td>' + (doc['revision_date'] == null ? "" : doc['revision_date'].substring(0,10)) + '</td>'
                                 +'<td>' + (doc['status'] == null ? "" : doc['status']) + '</td></tr>');

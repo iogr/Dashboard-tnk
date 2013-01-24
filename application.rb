@@ -208,7 +208,8 @@ get '/data/4' do
   query_result.each{|row| result['works'] << row}
   query_result.do
 
-  query_result = db_client.execute("SELECT r.name, 
+  query_result = db_client.execute("SELECT r.objectid as id,
+                                           r.name, 
                                            rr.name as response,
                                            res.name as responsible
                                     FROM RISK as r 
@@ -224,7 +225,8 @@ get '/data/4' do
 
   # d.documentcategoryname = “Запрос на изменение”
 
-  query_result = db_client.execute("SELECT d.title, 
+  query_result = db_client.execute("SELECT d.objectid as id,
+                                           d.title, 
                                            d.revisiondate as revision_date,
                                            dsc.name as status
                                     FROM DOCUMENT as d 
