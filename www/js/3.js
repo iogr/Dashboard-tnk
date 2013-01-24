@@ -22,7 +22,7 @@ function formatDollar(num) {
     var count = 0;
     for (x in chars) {
         count++;
-        if(count%3 == 1 && count != 1) {
+        if(count%3 == 1 && count != 1 && chars[x] != '-') {
             newstr = chars[x] + ',' + newstr;
         } else {
             newstr = chars[x] + newstr;
@@ -33,41 +33,61 @@ function formatDollar(num) {
 
 
     var setDataToDom = function(data) {
-        $('#ev').html(Math.floor(parseFloat(data['ev'])));
-        $('#ac').html(Math.floor(parseFloat(data['ac'])));
-        $('#pv').html(Math.floor(parseFloat(data['pv'])));
+        $('#ev').html('<nobr>'+formatDollar(Math.floor(parseFloat(data['ev']))) + ' \u0440\u0443\u0431\u002E');
+        $('#ac').html('<nobr>'+formatDollar(Math.floor(parseFloat(data['ac'])))+ ' \u0440\u0443\u0431\u002E');
+        $('#pv').html('<nobr>'+formatDollar(Math.floor(parseFloat(data['pv'])))+ ' \u0440\u0443\u0431\u002E');
         $('#spi').html(data['spi']);
-        $('#sv').html(Math.floor(parseFloat(data['sv'])));
+        $('#sv').html(formatDollar(Math.floor(parseFloat(data['sv'])))+ ' \u0440\u0443\u0431\u002E');
         $('#cpi').html(data['cpi']);
-        $('#cv').html(Math.floor(parseFloat(data['cv'])));
-        $('#vac').html(Math.floor(parseFloat(data['vac'])));
+        $('#cv').html(formatDollar(Math.floor(parseFloat(data['cv'])))+ ' \u0440\u0443\u0431\u002E');
+        $('#vac').html(formatDollar(Math.floor(parseFloat(data['vac'])))+ ' \u0440\u0443\u0431\u002E');
 
-        chart.series[0].points[0].update(parseFloat(data['ev']));
-        chart.series[0].points[1].update(parseFloat(data['ac']));
-        chart.series[0].points[2].update(parseFloat(data['pv']));
+        chart.series[0].points[0].update(parseFloat(data['pv']));
+        chart.series[0].points[1].update(parseFloat(data['ev']));
+        chart.series[0].points[2].update(parseFloat(data['ac']));
 
 if (parseFloat(data['ev']) > parseFloat(data['ac'])) {
 
 $('#res1').html('\u042D\u043A\u043E\u043D\u043E\u043C\u0438\u044F\u0020\u043F\u043E\u0020\u0431\u044E\u0434\u0436\u0435\u0442\u0443')
-
+$('#res1b').html('<img src="img/green.png"  height="22px" width="22px" style="vertical-align:middle;opacity:0.5">');
 } else { 
 
-$('#res1').html('\u041F\u0435\u0440\u0435\u0440\u0430\u0441\u0445\u043E\u0434\u0020\u043F\u043E\u0020\u0431\u044E\u0434\u0436\u0435\u0442\u0443');
-
+$('#res1').html('\u041F\u0435\u0440\u0435\u0440\u0430\u0441\u0445\u043E\u0434\u0020\u043F\u043E\u0020\u0431\u044E\u0434\u0436\u0435\u0442\u0443')
+$('#res1b').html('<img src="img/red.png"  height="22px" width="22px" style="vertical-align:middle;opacity:0.5">');
        };
 
 
 if (parseFloat(data['ev']) > parseFloat(data['pv'])) {
 
 $('#res2').html('\u041E\u043F\u0435\u0440\u0435\u0436\u0435\u043D\u0438\u0435\u0020\u043F\u043E\u0020\u0433\u0440\u0430\u0444\u0438\u043A\u0443')
-
+$('#res2b').html('<img src="img/green.png"  height="22px" width="22px" style="vertical-align:middle;opacity:0.5">');
 } else { 
 
-$('#res2').html('\u041E\u0442\u0441\u0442\u0430\u0432\u0430\u043D\u0438\u0435\u0020\u043E\u0442\u0020\u0433\u0440\u0430\u0444\u0438\u043A\u0430');
-
+$('#res2').html('\u041E\u0442\u0441\u0442\u0430\u0432\u0430\u043D\u0438\u0435\u0020\u043E\u0442\u0020\u0433\u0440\u0430\u0444\u0438\u043A\u0430')
+$('#res2b').html('<img src="img/yellow.png"  height="22px" width="22px" style="vertical-align:middle;opacity:0.5">');
        };
 
 
+if ((parseFloat(data['ev']) > parseFloat(data['ac'])) && (parseFloat(data['ev']) < parseFloat(data['pv']))) { 
+(t13).style.opacity = 1
+};
+if ((parseFloat(data['ev']) > parseFloat(data['ac'])) && (parseFloat(data['ev']) > parseFloat(data['pv']))) { 
+(t11).style.opacity = 1
+};
+
+if ((parseFloat(data['ev']) < parseFloat(data['ac'])) && (parseFloat(data['ev']) > parseFloat(data['pv']))) { 
+(t31).style.opacity = 1
+};
+
+if ((parseFloat(data['ev']) < parseFloat(data['ac'])) && (parseFloat(data['ev']) < parseFloat(data['pv']))) { 
+(t33).style.opacity = 1
+};
+
+$('#res3').html((parseFloat(data['spi'])*parseFloat(data['cpi'])).toFixed(4));
+
+if ((parseFloat(data['spi'])*parseFloat(data['cpi']))>1) { 
+$('#res3b').html('<img src="img/green.png"  height="22px" width="22px" style="vertical-align:middle;opacity:0.5">');
+};
 
 
     };
@@ -85,7 +105,7 @@ $('#res2').html('\u041E\u0442\u0441\u0442\u0430\u0432\u0430\u043D\u0438\u0435\u0
                 text: ''
             },
             xAxis: {
-                categories: ['Освоенный объём (EV)', 'Факт. Затраты (АС)', 'Плановое освоение (PV)'],
+                categories: ['Плановое освоение (PV)','Освоенный объём (EV)', 'Факт. Затраты (АС)'],
                 title: {
                     text: null
                 }
@@ -100,9 +120,9 @@ $('#res2').html('\u041E\u0442\u0441\u0442\u0430\u0432\u0430\u043D\u0438\u0435\u0
             },
             tooltip: {
 	    shared: true,
-            valueDecimals: 1,
-            valuePrefix: '$',
-            valueSuffix: ' USD'
+            valueDecimals: 2,
+            valuePrefix: '',
+            valueSuffix: ' \u0440\u0443\u0431\u002E'
             },
             plotOptions: {
 		
@@ -115,7 +135,7 @@ $('#res2').html('\u041E\u0442\u0441\u0442\u0430\u0432\u0430\u043D\u0438\u0435\u0
 			crop: true,
 			dataLabels: {
 			formatter:  function() {
-	return '$'+ formatDollar(this.y);
+	return ''+ formatDollar(this.y) + ' \u0440\u0443\u0431\u002E';
 			},
 			style: {
                         fontWeight:'bold',
