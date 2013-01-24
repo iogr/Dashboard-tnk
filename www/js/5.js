@@ -84,7 +84,7 @@ var getData = function() {
     });
 
 
-    alert('cal');
+    // alert('cal');
     
     $('#calendar').fullCalendar({
       header: {
