@@ -5,6 +5,8 @@
 //getting data from service
 var __data__ = null;
 
+
+
 var getData = function() {
 $.ajaxSetup({ cache: true });
     if (__data__ != null) {
@@ -261,6 +263,7 @@ innerRadius: '67%'
 var plan_fact_gauge;
 
 $(document).ready(function() {
+    setDataToDom({"gauge_percent_actual":"0.59294E1","gauge_percent_planned":"0.3215E1","eps_name":"ПРОГРАММА ГАЗ","start_date":"09.01.08","end_date":"01.03.17","est_end_date":"01.03.17","cost":"0.14597075172647446912638E13","report_date":"14.09.12","risks_text":"есть умеренные риски","risks_alert":"yellow","cost_alert":"green","cost_text":"сроки и бюджет соблюдены","timelimits_text":"сроки соблюдены","timelimits_alert":"green","eps_exec_dir":"А. М. Слепцов","eps_dir":"В. А. Благовещенский"});
     $.ajaxSetup({ cache: true });
 
     getData();
