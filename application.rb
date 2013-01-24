@@ -87,22 +87,22 @@ get '/data/index' do
   red_count = risks.count{|x| x >= options.risk_red_score}
   yellow_count = risks.count{|x| x >= options.risk_yellow_score}
   if red_count == 0
-    result['risks_text'] = "Есть значителные риски"
+    result['risks_text'] = "Есть значителные риски."
     # result['risks_text'] = "Количество красных рисков: #{red_count}."
     result['risks_alert'] = "red"
   elsif not yellow_count == 0
-    result['risks_text'] = "Есть умеренные риски"
+    result['risks_text'] = "Есть умеренные риски."
     # result['risks_text'] = "Количество жёлтых рисков: #{yellow_count}."
     result['risks_alert'] = "yellow"
   else
-    result['risks_text'] = "Все риски незначительные"
+    result['risks_text'] = "Все риски незначительные."
     result['risks_alert'] = "green"
   end
 
   cost = result['cost'].to_f
   if (cost < options.cost_red_score)
     result['cost_alert'] = "red"
-    result['cost_text'] = "Отставание по срокам и перерасход бюджета"
+    result['cost_text'] = "Отставание по срокам и перерасход бюджета."
   elsif (cost < options.cost_yellow_score)
     result['cost_alert'] = "yellow"
     cost_trunc = (cost.abs.to_i / 1000).to_s + ' '
@@ -111,7 +111,7 @@ get '/data/index' do
     result['cost_text'] = "Перерасход бюджета составляет #{cost_trunc.strip} тыс. руб."
   else
     result['cost_alert'] = "green"
-    result['cost_text'] = "Cроки и бюджет соблюдены"
+    result['cost_text'] = "Cроки и бюджет соблюдены."
   end
 
   # cost_trunc = (cost.abs.to_i / 1000).to_s + ' '
@@ -137,13 +137,13 @@ get '/data/index' do
   
   if (timespread > options.timeline_red_score)
     result['timelimits_alert'] = "red"
-    result['timelimits_text'] = "Отставание ключевой контрольной точки(чек) более 6 мес"
+    result['timelimits_text'] = "Отставание ключевой контрольной точки(чек) более 6 мес."
   elsif (timespread > options.timeline_yellow_score)
     result['timelimits_alert'] = "yellow"
-    result['timelimits_text'] = "Отставание ключевой контрольной точки(чек) более 3 мес"
+    result['timelimits_text'] = "Отставание ключевой контрольной точки(чек) более 3 мес."
   else
     result['timelimits_alert'] = "green"
-    result['timelimits_text'] = "Сроки соблюдены"
+    result['timelimits_text'] = "Сроки соблюдены."
   end
 
   result['eps_exec_dir'] = "А. М. Слепцов"
