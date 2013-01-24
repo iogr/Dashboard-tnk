@@ -61,7 +61,7 @@ var getData = function() {
         // ac.setTime(Date.parse(act['actual']));
         if (maxdate < ac) {maxdate = ac};
         if (mindate > ac) {mindate = ac};
-        events.push({start: ac, title: '\u0424\u0430\u043A\u0442\u003A\u0020'+ act['name']});
+        events.push({start: ac, title: '\u0424\u0430\u043A\u0442\u003A\u0020'+ act['name'], backgroundColor: 'green'});
 
       };
 
