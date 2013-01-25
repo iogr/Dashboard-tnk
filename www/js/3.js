@@ -162,7 +162,7 @@ $('#res3b').html('<img src="img/green.png"  height="22px" width="22px" style="ve
             }]
         });
 
-        window.setInterval(function(){if (__data__ == null) {$("#cached").show();}}, 1000);
+        window.setInterval(function(){if (__data__ == null) {$("#cached").show();}}, 4000);
         setDataToDom({"ev":"122003247871.89130","ac":"88960857323.94965","pv":"122430192865.72511","spi":"0.99651","sv":"-426944993.83384","cpi":"1.37143","cv":"33042390547.94165","vac":"1266715472611.14180"});
 
         getData();
