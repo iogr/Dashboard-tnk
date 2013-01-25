@@ -1,53 +1,17 @@
 var __data__ = null;
-var cache = new ajaxCache('GET', true, 1800000);
+// var cache = new ajaxCache('GET', true, 1800000);
 
 var getData = function() {
     if (__data__ != null) {
         return __data__;
     } else {
-        // // $.getJSON('http://94.127.69.63:8080/data/5', function(data) {
-        // $.getJSON('data/5', function(data) {
-        //     __data__ = data;
-        //     setDataToDom(data);
-        //     return data;
-        // });
-        // $.ajax({type: 'get', url: 'http://94.127.69.63:8080/data/5',dataType:"json", cache:true}).done(
-        // $.ajax({type: 'get', url: 'data/5',dataType:"json", cache:true}).done(
-        //   function(data) {
-        //     __data__ = data;
-        //     setDataToDom(data);
-        //     return data;
-        // });
-    
-
-      ajax_path = 'http://94.127.69.63:8080/data/5';
-      // ajax_path = 'data/5';
-      if(cache.on)
-      {
-        var cachedResponse = cache.get(ajax_path, [__data__]);
-        if(cachedResponse !== false)
-        {
-          // update website
-          setDataToDom(cachedResponse); // We just avoided one ajax request
-          return true;
-        }
-      }
-      $.ajax({
-        url: ajax_path,
-        type: 'GET',
-        data: __data__,
-        dataType: 'json',
-        success: function(response) {
-          if(cache.on) cache.put(ajax_path, __data__, response); // record the new response
-          // update website
-          setDataToDom(response);
-          $("#cached").hide();
-        },
-        error: function(xhr) {
-          // handle errors
-          handle_errors(xhr);
-        },
-      });
+        $.getJSON('http://94.127.69.63:8080/data/4', function(data) {
+        // $.getJSON('data/4', function(data) {
+            __data__ = data;
+            setDataToDom(data);
+            $("#cached").hide();
+            return data;
+        });
     }
 };
 
