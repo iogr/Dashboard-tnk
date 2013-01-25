@@ -77,8 +77,8 @@ var setDataToDom = function(data) {
     // plan_fact_gauge.series[0].points[0].update(parseFloat(data['gauge_percent_actual']));
     // plan_fact_gauge.series[0].points[1].update(parseFloat(data['gauge_percent_planned']));
 
-    $('#planned').append(parseFloat(data['gauge_percent_planned']).toFixed(2) + '%');
-    $('#actual').append(parseFloat(data['gauge_percent_actual']).toFixed(2) + '%');
+    $('#planned').html(parseFloat(data['gauge_percent_planned']).toFixed(2) + '%');
+    $('#actual').html(parseFloat(data['gauge_percent_actual']).toFixed(2) + '%');
 
 
     plan_fact_gauge = new Highcharts.Chart({

@@ -47,24 +47,26 @@ var setDataToDom = function(data) {
 
     monthArrayToTextArray(data['categories']);
 
+    $('.tabledata').remove();
+
     for (index in data['categories']) {
-        $('#table_header').append('<td style=\"background-color:#e0e0e0\"><b>' + data['categories'][index] + '</b></td>');
+        $('#table_header').append('<td class="tabledata" style=\"background-color:#e0e0e0\"><b>' + data['categories'][index] + '</b></td>');
     };
     
     for (index in data['ФСР']) {
-        $('#table_fsr_row').append('<td>' + data['ФСР'][index] + '%</td>');
+        $('#table_fsr_row').append('<td class="tabledata">' + data['ФСР'][index] + '%</td>');
     };
 
     for (index in data['ФСТ']) {
-        $('#table_fst_row').append('<td>' + data['ФСТ'][index] + '%</td>');
+        $('#table_fst_row').append('<td class="tabledata">' + data['ФСТ'][index] + '%</td>');
     };
 
     for (index in data['ПСТ']) {
-        $('#table_pst_row').append('<td>' + data['ПСТ'][index] + '%</td>');
+        $('#table_pst_row').append('<td class="tabledata">' + data['ПСТ'][index] + '%</td>');
     };
 
     for (index in data['ПСР']) {
-        $('#table_psr_row').append('<td>' + data['ПСР'][index] + '%</td>');
+        $('#table_psr_row').append('<td class="tabledata">' + data['ПСР'][index] + '%</td>');
     };
 
 
