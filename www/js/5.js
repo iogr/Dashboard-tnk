@@ -76,6 +76,9 @@ var getData = function() {
     // report_date.setTime(Date.parse(data['report_date']));
     var pre_i = 1;
     var next_i = 1;
+
+    $('.tabledata').remove();
+
     $.each(data['activities'], function(i, act) {
       // alert(Date.parse(act['planned']));
       var pl = $.datepicker.parseDate('dd.mm.yy', act['planned']);
@@ -97,12 +100,12 @@ var getData = function() {
       };
 
       if (pl < report_date) {
-        $('#previous_list').append('<tr><td style="background-color:white" width="4%">' + pre_i++ + '</td>' +
+        $('#previous_list').append('<tr class="tabledata"><td style="background-color:white" width="4%">' + pre_i++ + '</td>' +
                                         '<td>' + act['name'] + '</td>' +
                                         '<td>' + $.datepicker.formatDate('dd.mm.yy', pl) + '</td>' +
                                         '<td>' + (ac == null ? "" : $.datepicker.formatDate('dd.mm.yy', ac)) + '</td></tr>');
       } else {
-        $('#next_list').append('<tr><td style="background-color:white" width="4%">' + next_i++ + '</td>' +
+        $('#next_list').append('<tr class="tabledata"><td style="background-color:white" width="4%">' + next_i++ + '</td>' +
                                         '<td>' + act['name'] + '</td>' +
                                         '<td>' + $.datepicker.formatDate('dd.mm.yy', pl) + '</td>' +
                                         '<td>' + (ac == null ? "" : $.datepicker.formatDate('dd.mm.yy', ac)) + '</td></tr>');
@@ -116,6 +119,8 @@ var getData = function() {
 
 
     // alert('cal');
+
+    $('#calendar').html('');
     
     $('#calendar').fullCalendar({
       header: {

@@ -15,6 +15,15 @@ var getData = function() {
     }
 };
 
+// var clearTable = function(table) {
+
+//   $.each(table.children(), function(i, row) {
+//     if (i !== 0) {
+//       row.remove();
+//     }
+//   });
+// };
+
 var setDataToDom = function(data) {
 // {"works":[{"name":"ВУ УКПГ","planned":"0.24355E1","actual":"0.24325E1"},
 //           {"name":"НУ УКПГ","planned":"0.27695E1","actual":"0.27741E1"},
@@ -30,9 +39,15 @@ var setDataToDom = function(data) {
   var work_categories = [];
   var planned_data = [];
   var actual_data = [];
+  // clearTable($('#works_table'));
+  // clearTable($('#risks_table'));
+  // clearTable($('#documents_table'));
+
+  $(".tabledata").remove();
+
 
   $.each(data['works'], function(i, work) {
-    $('#works_table').append('<tr><td align="left">' + work['name'] + '</td>'
+    $('#works_table').append('<tr class="tabledata"><td align="left">' + work['name'] + '</td>'
                                 +'<td>' + parseFloat(work['planned']).toFixed(2) + '</td>'
                                 +'<td>' + parseFloat(work['actual']).toFixed(2) + '</td></tr>');
 
@@ -42,14 +57,14 @@ var setDataToDom = function(data) {
   });
 
   $.each(data['risks'], function(i, risk) {
-    $('#risks_table').append('<tr><td width=5%>' + risk['id']+ '</td>'
+    $('#risks_table').append('<tr class="tabledata"><td width=5%>' + risk['id']+ '</td>'
 				+ '<td align="left">' + risk['name'] + '</td>'
                                 +'<td >' + (risk['response'] == null ? "" : risk['response']) + '</td>'
                                 +'<td>' + (risk['responsible'] == null ? "" : risk['responsible']) + '</td></tr>');
   });
 
   $.each(data['documents'], function(i, doc) {
-    $('#documents_table').append('<tr><td width=5%>' + doc['id'] + '</td>'
+    $('#documents_table').append('<tr class="tabledata"><td width=5%>' + doc['id'] + '</td>'
 				+ '<td align="left">' + doc['title'] + '</td>'
                                 +'<td>' + (doc['revision_date'] == null ? "" : doc['revision_date'].substring(0,10)) + '</td>'
                                 +'<td>' + (doc['status'] == null ? "" : doc['status']) + '</td></tr>');
