@@ -66,13 +66,13 @@ var getData = function() {
       if (pl < report_date) {
         $('#previous_list').append('<tr class="tabledata"><td style="background-color:white" width="4%">' + pre_i++ + '</td>' +
                                         '<td>' + act['name'] + '</td>' +
-                                        '<td><a href="javascript: goToCalendar('+pl.getFullYear()+','+pl.getMonth()+','+pl.getDay()+')">' + $.datepicker.formatDate('dd.mm.yy', pl) + '</a></td>' +
-                                        '<td>' + (ac == null ? "" : '<a href="javascript: goToCalendar('+ac.getFullYear()+','+ac.getMonth()+','+ac.getDay()+')">'+$.datepicker.formatDate('dd.mm.yy', ac)+'</a>') + '</td></tr>');
+                                        '<td><a href="javascript: goToCalendar('+pl.getFullYear()+','+pl.getMonth()+','+pl.getDay()+');$(window).scrollTop(0);">' + $.datepicker.formatDate('dd.mm.yy', pl) + '</a></td>' +
+                                        '<td>' + (ac == null ? "" : '<a href="javascript: goToCalendar('+ac.getFullYear()+','+ac.getMonth()+','+ac.getDay()+');$(window).scrollTop(0);">'+$.datepicker.formatDate('dd.mm.yy', ac)+'</a>') + '</td></tr>');
       } else {
         $('#next_list').append('<tr class="tabledata"><td style="background-color:white" width="4%">' + next_i++ + '</td>' +
                                         '<td>' + act['name'] + '</td>' +
-                                        '<td><a href="javascript: goToCalendar('+pl.getFullYear()+','+pl.getMonth()+','+pl.getDay()+')">' + $.datepicker.formatDate('dd.mm.yy', pl) + '</a></td>' +
-                                        '<td>' + (ac == null ? "" : '<a href="javascript: goToCalendar('+ac.getFullYear()+','+ac.getMonth()+','+ac.getDay()+')">'+$.datepicker.formatDate('dd.mm.yy', ac)+'</a>') + '</td></tr>');
+                                        '<td><a href="javascript: goToCalendar('+pl.getFullYear()+','+pl.getMonth()+','+pl.getDay()+');$(window).scrollTop(0);">' + $.datepicker.formatDate('dd.mm.yy', pl) + '</a></td>' +
+                                        '<td>' + (ac == null ? "" : '<a href="javascript: goToCalendar('+ac.getFullYear()+','+ac.getMonth()+','+ac.getDay()+';$(window).scrollTop(0);)">'+$.datepicker.formatDate('dd.mm.yy', ac)+'</a>') + '</td></tr>');
       };
 
 
@@ -87,6 +87,7 @@ var getData = function() {
     $('#calendar').html('');
     
     $('#calendar').fullCalendar({
+	firstDay:1,
       header: {
         left: 'prev,next today',
         center: 'title',

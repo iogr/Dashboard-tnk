@@ -179,6 +179,7 @@ window.location = "3.html";
 $(previous).show(); 
    },
 fingers:1,
+threshold:100
 });
 
 $(document).ready(function() {

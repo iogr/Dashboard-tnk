@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>PM Expert - Login Page</title>
+
+		<!-- Foundation framework -->
+			<link rel="stylesheet" href="foundation/stylesheets/foundation.css" />
+			<link rel="stylesheet" href="css/style.css" />
+
+		<!-- Favicons and the like (avoid using transparent .png) -->
+			<link rel="shortcut icon" href="favicon.ico" />
+			<link rel="apple-touch-icon-precomposed" href="icon.png" />
+	</head>
+	<body class="ptrn_a grdnt_a" style="background-image:url('img/bg_e.png')">
+		<div class="container">
+            
+   
+            <br><br><br><br><br><br>
+			<div class="row">
+				<div class="twelve columns centered">
+								<div class="lb_content">
+                            <div class="login_logo" style="top:10px;left:10px"><img src="img/logo.png" width="150px" alt="" /></div>
+							<div class="cf">
+								<h2 class="lb_ribbon lb_dgray" align = "right"  style="background-color:#7e2a38;width:270px;top:50px"><span><h5 style="color:white">Форма обратной связи</span><span style="display:none">New password</span></h2>
+								
+							</div><br><br><br>
+									
+
+
+<form><h5>
+<div class="twelve columns centered">
+  <fieldset>
+
+<div class="five columns">
+<label><h6>Поле для сообщения:</label><br><br>    
+<textarea placeholder="Сообщение" style="width:420px;height:177px"></textarea><br>
+</div>  
+<div class="four columns"
+<label><h6>Получатель:</label><br><br>
+<select placeholder="Choose a Countryhellip" >
+												<option value="">Директор проекта</option>
+												<option value="">Зам. директора проекта</option>
+												<option value="United States">Ведущий администратор проекта (Иванов И.)</option>
+												<option value="United States">Администратор проекта (Петров А.)</option>
+												<option value="United Kingdom">Департамент по работе с персоналом</option>
+</select><img src="img/placeholder.gif" height=50% width=50% style="opacity:0.5;position:absolute;left:50px">
+</div>
+
+</fieldset>
+
+</div>
+</form>
+											<a href="5.html"><input style="top:0px;right:-10px;padding-right:-50px" type="submit" class="button large radius center black" value="Вернуться" />
+											<a href="5.html"><input style="background-color:#2b8cbe;top:0px;right:-43%" type="submit" class="button large radius center black" value="Отправить"/>
+									<div class="l_pane" style="display:none">
+										<form action="dashboard.html" method="post" class="nice" id="rp_form">
+											<div class="sepH_c">
+												<p class="sepH_b">Please enter your email address. You will receive a link to create a new password via email.</p>
+												<div class="elVal">
+													<label for="upname">E-mail:</label>
+													<input type="text" id="upname" name="upname" class="oversize expand input-text" />
+												</div>
+											</div>
+											<div class="cf">
+												<input type="submit" class="button small radius right black" value="Get new password" />
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<script src="js/jquery.min.js"></script>
+		<script src="js/s_scripts.js"></script>
+		<script src="lib/validate/jquery.validate.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				$(".sl_link").click(function(event){
+					$('.l_pane').slideToggle('normal').toggleClass('dn');
+					$('.sl_link,.lb_ribbon').children('span').toggle();
+					event.preventDefault();
+				});
+
+				$("#l_form").validate({
+					highlight: function(element) {
+						$(element).closest('.elVal').addClass("form-field error");
+					},
+					unhighlight: function(element) {
+						$(element).closest('.elVal').removeClass("form-field error");
+					},
+					rules: {
+						username: "required",
+						password: "required"
+					},
+					messages: {
+						username: "Please enter your username (type anything)",
+						password: "Please enter a password (type anything)"
+					},
+					errorPlacement: function(error, element) {
+						error.appendTo( element.closest(".elVal") );
+					}
+				});
+
+				$("#rp_form").validate({
+					highlight: function(element) {
+						$(element).closest('.elVal').addClass("form-field error");
+					},
+					unhighlight: function(element) {
+						$(element).closest('.elVal').removeClass("form-field error");
+					},
+					rules: {
+						upname: {
+							required: true,
+							email: true
+						}
+					},
+					messages: {
+						upname: "Please enter a valid email address"
+					},
+					errorPlacement: function(error, element) {
+						error.appendTo( element.closest(".elVal") );
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

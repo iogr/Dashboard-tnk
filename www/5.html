@@ -45,8 +45,7 @@
 
 		<!-- Google fonts -->
 			<link href='css/opensans.css' rel='stylesheet' />
-			<link href='css/dosis.css' rel='stylesheet' />
-
+			
 
 		<!-- Favicons and the like (avoid using transparent .png) -->
 			<link rel="shortcut icon" href="favicon.ico" />
@@ -225,7 +224,7 @@
                             </table>
 
 </div></div>
-
+<div id="scroller" style="position:absolute;z-index:77;top:250px;left:5%;width:710px;height:850px;opacity:1;"></div>
 <br><br><br><br></div><img id="previous" src="img/arr_left.png" style="display:none;position:absolute;z-index:7;top:450px;left:-5%;height:150px;opacity:0.2;">	
 <center><div id="plank"><img src="img/plank.png" alt="Pertho Admin" width=60/></div></center>
 		<footer class="container" id="footer">
@@ -240,12 +239,24 @@
 
 $(document).ready( function (){
 
+$("#scroller").swipe({
+
+swipeRight: function () {
+window.location = "4.html";
+$(previous).show();
+		},
+threshold:100,
+fingers:1
+});
+
+
 $("#forscroll").swipe({
 
 swipeRight: function () {
 window.location = "4.html";
 $(previous).show();
 		},
+threshold:100,
 fingers:1
 });
 
@@ -256,6 +267,7 @@ swipeRight: function () {
 window.location = "4.html";
 $(previous).show();
 		},
+threshold:200,
 fingers:1
 
 });
@@ -267,11 +279,10 @@ swipeRight: function () {
 window.location = "4.html";
 $(previous).show();
 		},
+threshold:200,
 fingers:1
 
 });
-
-
 
 })
 

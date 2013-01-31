@@ -34,14 +34,14 @@ function formatDollar(num) {
 
 
     var setDataToDom = function(data) {
-        $('#ev').html('<nobr>'+formatDollar(Math.floor(parseFloat(data['ev']))) + ' \u0440\u0443\u0431\u002E');
-        $('#ac').html('<nobr>'+formatDollar(Math.floor(parseFloat(data['ac'])))+ ' \u0440\u0443\u0431\u002E');
-        $('#pv').html('<nobr>'+formatDollar(Math.floor(parseFloat(data['pv'])))+ ' \u0440\u0443\u0431\u002E');
+        $('#ev').html('<nobr>'+formatDollar(Math.floor(parseFloat(data['ev'])/1000)) + ' \u0442\u044B\u0441\u002E\u0020\u0440\u0443\u0431\u002E');
+        $('#ac').html('<nobr>'+formatDollar(Math.floor(parseFloat(data['ac'])/1000))+ ' \u0442\u044B\u0441\u002E\u0020\u0440\u0443\u0431\u002E');
+        $('#pv').html('<nobr>'+formatDollar(Math.floor(parseFloat(data['pv'])/1000))+ ' \u0442\u044B\u0441\u002E\u0020\u0440\u0443\u0431\u002E');
         $('#spi').html(data['spi']);
-        $('#sv').html(formatDollar(Math.floor(parseFloat(data['sv'])))+ ' \u0440\u0443\u0431\u002E');
+        $('#sv').html(formatDollar(Math.floor(parseFloat(data['sv'])/1000))+ ' \u0442\u044B\u0441\u002E\u0020\u0440\u0443\u0431\u002E');
         $('#cpi').html(data['cpi']);
-        $('#cv').html(formatDollar(Math.floor(parseFloat(data['cv'])))+ ' \u0440\u0443\u0431\u002E');
-        $('#vac').html(formatDollar(Math.floor(parseFloat(data['vac'])))+ ' \u0440\u0443\u0431\u002E');
+        $('#cv').html(formatDollar(Math.floor(parseFloat(data['cv'])/1000))+ ' \u0442\u044B\u0441\u002E\u0020\u0440\u0443\u0431\u002E');
+        $('#vac').html(formatDollar(Math.floor(parseFloat(data['vac'])/1000))+ ' \u0442\u044B\u0441\u002E\u0020\u0440\u0443\u0431\u002E');
 
         chart.series[0].points[0].update(parseFloat(data['pv']));
         chart.series[0].points[1].update(parseFloat(data['ev']));
@@ -84,7 +84,13 @@ if ((parseFloat(data['ev']) < parseFloat(data['ac'])) && (parseFloat(data['ev'])
 (t33).style.opacity = 1
 };
 
-$('#res3').html((parseFloat(data['spi'])*parseFloat(data['cpi'])).toFixed(4));
+if (parseFloat(data['spi']) * parseFloat(data['cpi']) >1) {
+$('#res3').html('<a href="#" data-reveal-id="myModal" style="color: inherit">'+(parseFloat(data['spi'])*parseFloat(data['cpi'])).toFixed(4)+' > 1'+'</a>')
+};
+
+if (parseFloat(data['spi']) * parseFloat(data['cpi']) <1) {
+$('#res3').html((parseFloat(data['spi'])*parseFloat(data['cpi'])).toFixed(4)+' < 1')
+};
 
 if ((parseFloat(data['spi'])*parseFloat(data['cpi']))>1) { 
 $('#res3b').html('<img src="img/green.png"  height="22px" width="22px" style="vertical-align:middle;opacity:0.5">');
@@ -136,7 +142,7 @@ $('#res3b').html('<img src="img/green.png"  height="22px" width="22px" style="ve
 			crop: true,
 			dataLabels: {
 			formatter:  function() {
-	return ''+ formatDollar(this.y) + ' \u0440\u0443\u0431\u002E';
+	return ''+ formatDollar(Math.floor(this.y / 1000)) + ' \u0442\u044B\u0441\u002E\u0020\u0440\u0443\u0431\u002E';
 			},
 			style: {
                         fontWeight:'bold',

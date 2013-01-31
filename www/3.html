@@ -16,6 +16,8 @@
 <script type="text/javascript" src="js/jquery.list.min.js"></script>
 <script type="text/javascript" src="js/pertho.js"></script>
 <script type="text/javascript" src="js/3.js"></script>
+<script type="text/javascript" src="js/jquery.reveal.js"></script>
+<link rel="stylesheet" href="css/reveal.css">
 		<title>PM Expert Dashboard</title>
 
 		<!-- Foundation framework -->
@@ -162,8 +164,9 @@
                                         <td id="res2" style="background-color:white">Опережение по графику</td>
 					<td width=10% id="res2b" style="background-color:white"></td>
 				    </tr>
+	<tr><td colspan="3" style="background-color:#B0BED9"><b>Обобщающий показатель</td></tr>
 			            <tr >
-                                        <td width=33% style="background-color:white">Критический коэффициент<nobr> (CR)</td>
+                                        <td width=33% style="background-color:white"><a href="#" data-reveal-id="myModal" style="color: inherit">Критический коэффициент<nobr> (CR)</a></td>
                                         <td id="res3" style="background-color:white"></td>
 					<td width=10% id="res3b" style="background-color:white"></td>
 				    </tr>
@@ -231,6 +234,12 @@
 				</div>
 		</footer>
 
+
+<div id="myModal" class="reveal-modal large">
+  <h6>Критический коэффициент (CR)</h6><br>
+  <p class="lead">CR = SPI * CPI. Значение больше 1 говорит о плановом (удовлетворительном) состоянии хода выполнения проекта.</p>
+  <a class="close-reveal-modal">Закрыть</a>
+</div>
 		
 <script>				
 $(document).swipe({

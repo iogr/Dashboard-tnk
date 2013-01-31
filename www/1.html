@@ -55,7 +55,11 @@
 	<![endif]-->
 
 	</head>
-	<body class="ptrn_a grdnt_a mhover_a" height=100%>
+	<body class="ptrn_a grdnt_a mhover_a" style="-webkit-overflow-scrolling: none;
+overflow-x:hidden;
+overflow-y: hidden;   
+position:relative;
+height: 1004px;">
 <div class="meny" style="
 	
 	background-color: #222;
@@ -79,17 +83,12 @@
 				</div>
 
 		</div><div class="contents" style="	
-	width: 100%;
-	height: device-height;
-	margin: 0;
+		
 	overflow:hidden;
 	overflow-y: hidden;
 
-	-webkit-overflow-scrolling: touch;
 
-	-webkit-box-sizing: border-box;
-	   -moz-box-sizing: border-box;
-	        box-sizing: border-box;
+	
 "> 
 	<header>
 			<div class="container head_s_a">
@@ -118,7 +117,7 @@
 <a class="button white tiny radius nice" href="3.html"><font color="#7e2a38">3</font></a>&nbsp;
 <a class="button white tiny radius nice" href="4.html"><font color="#7e2a38">4</font></a>&nbsp;
 <a class="button white tiny radius nice" href="5.html"><font color="#7e2a38">5</font></a>&nbsp;
-<span id="cached" style="display:none;">Закешированная версия.</span><br><br>	
+<span id="cached" style="display:none;" align="right">Закешированная версия (отсутствует подключение к интернету).</span><br><br>	
 
 <!-- Место под таблицу -->
 
@@ -173,13 +172,15 @@
     </div>
  </div>
 
-<div class="eight columns"><br><br><br><br>
+<div class="eight columns"><br>
 <table cellpadding="0" cellspacing="0" border="0" class="display mobile_dt1 dt_act" id="dt3" height=40>
                                 <tbody>
-                                    <tr >                        
-					<td rowspan="2" style="background-color:gray;color:white"><b>Прогнозная дата окончания Программы</td>
-                                        <td id="est_end_date" rowspan="2" style="background-color:gray;color:white">17.11.2015</td>
-			            </tr> 
+		                    <tr >                        
+					<td colspan="1" style="background-color:gray;color:white"><b>Прогнозная дата окончания Программы</td>
+                                        <td id="est_end_date" rowspan="1" style="background-color:gray;color:white">17.11.2015</td>
+			            </tr>
+		<tr><td style="background-color:white">Факт</td><td id="actual2" style="background-color:white">5.93%</td></tr><tr><td style="background-color:white">План</td><td id="planned2" style="background-color:white">5.93%</td></tr>
+                 
 
             <tr >                        
 			            </tr> 
@@ -233,7 +234,7 @@
 			</div>
 		
 
-		<footer class="container"><center><img src="img/plank.png" width=60/></center>
+		<footer class="container" style="position:relative;z-index:100;bottom:0px;"><center><img src="img/plank.png" width=60/></center>
 		<div class="row" id="footer">
                     Copyright © ЗАО «ПМ Эксперт»
 			</div>

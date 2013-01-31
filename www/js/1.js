@@ -79,6 +79,8 @@ var setDataToDom = function(data) {
 
     $('#planned').html(parseFloat(data['gauge_percent_planned']).toFixed(2) + '%');
     $('#actual').html(parseFloat(data['gauge_percent_actual']).toFixed(2) + '%');
+    $('#planned2').html(parseFloat(data['gauge_percent_planned']).toFixed(2) + '%');
+    $('#actual2').html(parseFloat(data['gauge_percent_actual']).toFixed(2) + '%');
 
 
     plan_fact_gauge = new Highcharts.Chart({
